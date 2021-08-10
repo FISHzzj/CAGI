@@ -88,12 +88,12 @@ class App extends React.Component {
         } else {
             return (
                 <div className="title-paly-b">
-                    <i className="material-icons" onClick={this.handleBack}>
+                    {/* <i className="material-icons" onClick={this.handleBack}>
                         keyboard_backspace
                     </i>
                     <i className="material-icons" onClick={this.showShareActionSheetMulpitleLine}>
                         share
-                    </i>
+                    </i> */}
                 </div>
             )
         }
