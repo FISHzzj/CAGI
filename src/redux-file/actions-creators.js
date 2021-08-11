@@ -4,7 +4,7 @@ import {
     reqKingKongModule,
     reqCategoryModule,
     reqTagList
-} from '../api'
+} from '../api1'
 import {
     slides,
     IndexActivityModules,

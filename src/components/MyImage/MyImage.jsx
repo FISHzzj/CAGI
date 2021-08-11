@@ -4,6 +4,7 @@ import "./MyImage.module.scss";
 class MyImage extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.defaultSrc = props.defaultSrc || require("../../../static/img/img_holder.png");
     this.state = {
       src: props.src || this.defaultSrc
@@ -43,4 +44,4 @@ class MyImage extends React.Component {
 }
 
 
-export { MyImage };
+export { MyImage } ;

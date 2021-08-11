@@ -9,7 +9,7 @@ module.exports = {
       "babel-polyfill",
       "./src/index.js",
       "./src/pages/home/index.jsx",
-      "./src/pages/home/categorys/index.jsx"
+      "./src/pages/home/categorys/index.jsx",
     ],
     vendor: ["react", "better-scroll", "react-redux", "react-lazyload"]
   },
@@ -119,7 +119,13 @@ module.exports = {
     hot: true
   },
   resolve: {
-    extensions: [".js", ".json", ".jsx"]
+    extensions: [".js", ".json", ".jsx"],
+    alias: {
+      '@': resolve('src'),
+      '@component': resolve('src/components'),
+      '@api': resolve('src/api'),
+      '@static': resolve('static'),
+    }
   },
   optimization: {
     runtimeChunk: true,
