@@ -2,10 +2,15 @@ import request from '@src/utility/request'
 
 // 币种信息列表
 export function currencyList() {
-    return request({
-        url: 'api/currency/currencyList',
-        method: 'get'
-    })
+    // return request({
+    //     url: 'api/currency/currencyList',
+    //     method: 'get'
+    // })
+
+    var res = {"errcode":0,"msg":"success","res":[{"id":1,"name":"USDT","rate":100,"image":"","is_del":0},{"id":2,"name":"JYB","rate":10,"image":"","is_del":0},{"id":3,"name":"TBAU","rate":100,"image":"","is_del":0},{"id":4,"name":"PSBAU","rate":100,"image":"","is_del":0}]}
+    return new Promise((resolve, reject) => {
+        resolve(res)
+      })
 }
 
 // 系统轮播消息

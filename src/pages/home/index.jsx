@@ -2,21 +2,21 @@ import React, { PureComponent } from 'react';
 import { Tabs, Badge, Carousel, NoticeBar, TabBar} from 'antd-mobile';
 import BScroll from 'better-scroll';
 import Slide from './slide';
-import { connect } from 'react-redux';
-import {
-  AsyncIndexActivityModule,
-  AsyncTitleColor
-} from '../../redux-file/actions-creators';
-import Kingkong from './kingkongmodule';
+// import { connect } from 'react-redux';
+// import {
+//   AsyncIndexActivityModule,
+//   AsyncTitleColor
+// } from '../../redux-file/actions-creators';
+// import Kingkong from './kingkongmodule';
 import LazyLoad, { forceCheck } from 'react-lazyload';
-import './index.less';
+// import './index.less';
 import { FixedSizeList as List } from 'react-window';
 import { MyImage } from '@component/MyImage/MyImage';
 import { Content } from '@component/Content/Content'
-import  "./index.scss";
+import  "./index.less";
 
 
-// import { currencyList, notice, banner, ventureList } from "@api/home";
+import { currencyList, notice, banner, ventureList } from "@api/home";
 
 
 
@@ -32,9 +32,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.wrap = React.createRef();
-    // this.state = {
-      
-    // };
+    currencyList().then(resp => {
+      console.log(resp)
+      this.setState({
+        currencyList: resp.res
+      });
+    });
   }
   state = {
     currencyList: [],
@@ -50,7 +53,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.props.IndexActivityModule();
+    // this.props.IndexActivityModule();
     forceCheck();
     this.myScroll = new BScroll(this.wrap.current, {
       bounce: false,
@@ -70,14 +73,14 @@ class App extends React.Component {
   };
   componentDidUpdate() {
     requestAnimationFrame(this.refresh);
-    this.myScroll.on('scroll', e => {
-      forceCheck();
-      if (e.y < -130) {
-        this.props.TitleColor('red');
-      } else if (e.y > -130) {
-        this.props.TitleColor('transparent');
-      }
-    });
+    // this.myScroll.on('scroll', e => {
+    //   forceCheck();
+    //   if (e.y < -130) {
+    //     this.props.TitleColor('red');
+    //   } else if (e.y > -130) {
+    //     this.props.TitleColor('transparent');
+    //   }
+    // });
   }
 
   render() {
@@ -104,24 +107,72 @@ class App extends React.Component {
             ))}
           </Carousel>
         </div>
+        <div className="part part_four">
+          <div className="part_four_title">价格</div>
+          {/* <div className={Css.part_four_item}>
+            <MyImage
+              src={require("@static/icon/home_usdt.png")}
+              className={Css.part_four_item_img}
+            ></MyImage>
+            <span className={Css.part_four_item_name}>USDT</span>
+            <span className={Css.part_four_item_price}>
+              $ {(this.state.currencyList[0]?.rate / 100).toFixed(4)}
+            </span>
+          </div> */}
+          <div className="part_four_item">
+            <MyImage
+              src={require("@static/icon/home_jyb.png")}
+              className="part_four_item_img"
+            ></MyImage>
+            <span className="part_four_item_name">JYB</span>
+            <span className="part_four_item_price">
+              $ {(this.state.currencyList[1]?.rate / 100).toFixed(4)}
+            </span>
+          </div>
+          <div className="part_four_item">
+            <MyImage
+              src={require("@static/icon/home_psbau.png")}
+              className="part_four_item_img"
+            ></MyImage>
+            <span className="part_four_item_name">PSBAU</span>
+            <span className="part_four_item_price">
+              $ {(this.state.currencyList[3]?.rate / 100).toFixed(4)}
+            </span>
+          </div>
+          <div className="part_four_item">
+            <MyImage
+              src={require("@static/icon/home_tbau.png")}
+              className="part_four_item_img"
+            ></MyImage>
+            <span className="part_four_item_name">TBAU</span>
+            <span className="part_four_item_price">
+              $ {(this.state.currencyList[2]?.rate / 100).toFixed(4)}
+            </span>
+          </div>
+        </div>
+
+
+
       </div>
     );
   }
 }
 
-export default connect(
-  state => ({
-    data: state.IndexActivityModule,
-    KingkongModule: state.KingKong
-  }),
-  dispatch => ({
-    IndexActivityModule() {
-      const action = AsyncIndexActivityModule();
-      dispatch(action);
-    },
-    TitleColor(data) {
-      const action = AsyncTitleColor(data);
-      dispatch(action);
-    }
-  })
-)(App);
+// export default connect(
+//   state => ({
+//     data: state.IndexActivityModule,
+//     KingkongModule: state.KingKong
+//   }),
+//   dispatch => ({
+//     IndexActivityModule() {
+//       const action = AsyncIndexActivityModule();
+//       dispatch(action);
+//     },
+//     TitleColor(data) {
+//       const action = AsyncTitleColor(data);
+//       dispatch(action);
+//     }
+//   })
+// )(App);
+
+export default App

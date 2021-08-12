@@ -79,7 +79,20 @@ module.exports = {
                   localIdentName: '[local]--[hash:base64:5]'
                 }
               },
-              { loader: 'postcss-loader' },
+              {
+                loader: "postcss-loader",
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      flexbox:'no-2009',
+                    }),
+                    px2rem({remUnit:37.5})
+                    
+                  ]
+                }
+              },
               {
                 loader: 'less-loader',
                 options: { javascriptEnabled: true }

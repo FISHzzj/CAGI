@@ -14,6 +14,8 @@ import { MyImage } from "@component/MyImage/MyImage";
 // import { Index as IndexPage } from "./index/index";
 
 
+
+
 import { withRouter } from 'react-router-dom';
 import { NavLink, Switch, Route, Redirect } from 'react-router-dom';
 const cache = {};
@@ -87,6 +89,7 @@ class App extends React.Component {
           tintColor="#EBB807"
           hidden={this.state.hidden}
           prerenderingSiblingsNumber={0}
+
         >
           <TabBar.Item
             title="首页"
@@ -96,7 +99,7 @@ class App extends React.Component {
                 style={{
                   width: "22px",
                   height: "22px",
-                  background: `url(${require("@static/icon/home_tab_index_o.png")}) center center /  21px 21px no-repeat`
+                  background: `url(${require("@static/icon/home_tab_index.png")}) center center /  21px 21px no-repeat`
                 }}
               />
             }
@@ -105,7 +108,7 @@ class App extends React.Component {
                 style={{
                   width: "22px",
                   height: "22px",
-                  background: `url(${require("@static/icon/home_tab_index.png")}) center center /  21px 21px no-repeat`
+                  background: `url(${require("@static/icon/home_tab_index_o.png")}) center center /  21px 21px no-repeat`
                 }}
               />
             }
@@ -128,7 +131,7 @@ class App extends React.Component {
                 style={{
                   width: "22px",
                   height: "22px",
-                  background: `url(${require("@static/icon/home_tab_ecosystem_o.png")}) center center /  21px 21px no-repeat`
+                  background: `url(${require("@static/icon/home_tab_ecosystem.png")}) center center /  21px 21px no-repeat`
                 }}
               />
             }
@@ -137,7 +140,7 @@ class App extends React.Component {
                 style={{
                   width: "22px",
                   height: "22px",
-                  background: `url(${require("@static/icon/home_tab_ecosystem.png")}) center center /  21px 21px no-repeat`
+                  background: `url(${require("@static/icon/home_tab_ecosystem_o.png")}) center center /  21px 21px no-repeat`
                 }}
               />
             }
@@ -160,7 +163,7 @@ class App extends React.Component {
                 style={{
                   width: "22px",
                   height: "22px",
-                  background: `url(${require("@static/icon/home_tab_news_o.png")}) center center /  21px 21px no-repeat`
+                  background: `url(${require("@static/icon/home_tab_news.png")}) center center /  21px 21px no-repeat`
                 }}
               />
             }
@@ -169,7 +172,7 @@ class App extends React.Component {
                 style={{
                   width: "22px",
                   height: "22px",
-                  background: `url(${require("@static/icon/home_tab_news.png")}) center center /  21px 21px no-repeat`
+                  background: `url(${require("@static/icon/home_tab_news_o.png")}) center center /  21px 21px no-repeat`
                 }}
               />
             }
@@ -192,7 +195,7 @@ class App extends React.Component {
                 style={{
                   width: "22px",
                   height: "22px",
-                  background: `url(${require("@static/icon/home_tab_my_o.png")}) center center /  21px 21px no-repeat`
+                  background: `url(${require("@static/icon/home_tab_my.png")}) center center /  21px 21px no-repeat`
                 }}
               />
             }
@@ -201,7 +204,7 @@ class App extends React.Component {
                 style={{
                   width: "22px",
                   height: "22px",
-                  background: `url(${require("@static/icon/home_tab_my.png")}) center center /  21px 21px no-repeat`
+                  background: `url(${require("@static/icon/home_tab_my_o.png")}) center center /  21px 21px no-repeat`
                 }}
               />
             }

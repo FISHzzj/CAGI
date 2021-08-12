@@ -3,6 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const os = require("os");
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const px2rem = require('postcss-px2rem');
+const autoprefixer = require("autoprefixer");
+
+
 module.exports = {
   entry: {
     app: [
@@ -78,6 +82,21 @@ module.exports = {
                 }
               },
               {
+                loader: "postcss-loader",
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      flexbox:'no-2009',
+                      
+                    }),
+                    px2rem({remUnit:37.5})
+                    
+                  ]
+                }
+              },
+              {
                 loader: "less-loader",
                 options: { javascriptEnabled: true }
               }
@@ -121,7 +140,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".json", ".jsx"],
     alias: {
-      '@': resolve('src'),
+      '@src': resolve('src'),
       '@component': resolve('src/components'),
       '@api': resolve('src/api'),
       '@static': resolve('static'),
