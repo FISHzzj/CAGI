@@ -13,7 +13,7 @@ module.exports = {
       "babel-polyfill",
       "./src/index.js",
       "./src/pages/home/index.jsx",
-      "./src/pages/home/categorys/index.jsx",
+      "./src/pages/home/categorys/index.jsx"
     ],
     vendor: ["react", "better-scroll", "react-redux", "react-lazyload"]
   },
@@ -68,7 +68,7 @@ module.exports = {
                   cacheDirectory: true
                 }
               }
-            ]
+            ],
           },
           {
             test: /\.(less|css)$/,
@@ -91,7 +91,7 @@ module.exports = {
                       flexbox:'no-2009',
                       
                     }),
-                    px2rem({remUnit:37.5})
+                    px2rem({remUnit:75})
                     
                   ]
                 }
@@ -134,7 +134,7 @@ module.exports = {
   devServer: {
     contentBase: "../build",
     open: true,
-    port: 5000,
+    port: 4000,
     hot: true
   },
   resolve: {

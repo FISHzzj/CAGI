@@ -13,7 +13,7 @@ import LazyLoad, { forceCheck } from 'react-lazyload';
 import { FixedSizeList as List } from 'react-window';
 import { MyImage } from '@component/MyImage/MyImage';
 import { Content } from '@component/Content/Content'
-import  "./index.less";
+import  "./index.scss";
 
 
 import { currencyList, notice, banner, ventureList } from "@api/home";

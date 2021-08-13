@@ -88,7 +88,7 @@ module.exports = {
                     autoprefixer({
                       flexbox:'no-2009',
                     }),
-                    px2rem({remUnit:37.5})
+                    px2rem({remUnit:75})
                     
                   ]
                 }

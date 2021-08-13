@@ -9,6 +9,7 @@ import './assets/index.less'
 import 'lib-flexible';
 
 
+
 ReactDOM.render(
     <HashRouter>
         <Provider store={store}><App ></App></Provider>

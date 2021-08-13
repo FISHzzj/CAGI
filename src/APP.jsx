@@ -13,7 +13,7 @@ import { TabBar } from "antd-mobile";
 import { MyImage } from "@component/MyImage/MyImage";
 // import { Index as IndexPage } from "./index/index";
 
-
+import { hot } from 'react-hot-loader'
 
 
 import { withRouter } from 'react-router-dom';
