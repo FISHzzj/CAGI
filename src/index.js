@@ -6,7 +6,7 @@ import { HashRouter ,BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './mock'
 import './assets/index.less'
-import 'lib-flexible';
+
 
 
 

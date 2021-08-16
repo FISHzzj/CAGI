@@ -134,7 +134,7 @@ module.exports = {
   devServer: {
     contentBase: "../build",
     open: true,
-    port: 4000,
+    port: 9000,
     hot: true
   },
   resolve: {

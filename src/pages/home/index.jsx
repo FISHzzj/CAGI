@@ -13,7 +13,7 @@ import LazyLoad, { forceCheck } from 'react-lazyload';
 import { FixedSizeList as List } from 'react-window';
 import { MyImage } from '@component/MyImage/MyImage';
 import { Content } from '@component/Content/Content'
-import  "./index.scss";
+import  "./index.less";
 
 
 import { currencyList, notice, banner, ventureList } from "@api/home";
@@ -33,9 +33,19 @@ class App extends React.Component {
     super();
     this.wrap = React.createRef();
     currencyList().then(resp => {
-      console.log(resp)
+      // console.log(resp)
       this.setState({
         currencyList: resp.res
+      });
+    });
+    ventureList().then(resp => {
+      this.setState({
+        ventureList: resp.res
+      });
+    });
+    notice().then(resp => {
+      this.setState({
+        noticeList: resp.res
       });
     });
   }
@@ -151,6 +161,122 @@ class App extends React.Component {
           </div>
         </div>
 
+        {/* 轮播图 */}
+        {this.state.ventureList.length > 0 && <Carousel
+          className="news_wrap"
+          vertical
+          dots={false}
+          dragging={false}
+          swiping={false}
+          autoplay
+          infinite
+        >
+          {this.state.ventureList.map(i => (
+            <div key={i.id} className="news_content">
+              {i.content}
+            </div>))
+          }
+        </Carousel>
+        }
+
+        {/* 轮播下面的部分一 */}
+        <div className="part part_one">
+          <div
+            className="part_one_item"
+            onClick={() => {
+              this.props.history.push("/index/jyb-invest");
+            }}
+          >
+            <MyImage
+              src={require("@static/icon/home_jyp_chuangtou.png")}
+              className="part_one_item_img"
+            ></MyImage>
+            <span className="part_one_item_title">JYB创投</span>
+          </div>
+          <div
+            className="part_one_item"
+            onClick={() => {
+              this.props.history.push("/index/ustd-invest");
+            }}
+          >
+            <MyImage
+              src={require("@static/icon/home_usdt_chuangtou.png")}
+              className="part_one_item_img"
+            ></MyImage>
+            <span className="part_one_item_title">USDT创投</span>
+          </div>
+          <div
+            className="part_one_item"
+            onClick={() => {
+              this.props.history.push("/index/profit");
+            }}
+          >
+            <MyImage
+              src={require("@static/icon/home_my_invest.png")}
+              className="part_one_item_img"
+            ></MyImage>
+            <span className="part_one_item_title">我的分红</span>
+          </div>
+          <div
+            className="part_one_item"
+            onClick={() => {
+              this.props.history.push("/index/transfer");
+            }}
+          >
+            <MyImage
+              src={require("@static/icon/home_transfer.png")}
+              className="part_one_item_img"
+            ></MyImage>
+            <span className="part_one_item_title">转账</span>
+          </div>
+        </div>
+
+        <div className="part part_two">
+          <div
+            className="part_two_item"
+            onClick={() => this.props.history.push("/index/recharge")}
+          >
+            <MyImage
+              src={require("@static/icon/home_recharge.png")}
+              className="part_two_item_img"
+            ></MyImage>
+            <span>充币</span>
+          </div>
+          <div className="part_two_seperate"></div>
+          <div
+            className="part_two_item"
+            onClick={() => this.props.history.push("/index/withdraw")}
+          >
+            <MyImage
+              src={require("@static/icon/home_withdraw.png")}
+              className="part_two_item_img"
+            ></MyImage>
+            <span>提币</span>
+          </div>
+        </div>
+        
+        {this.state.noticeList.length > 0 && <div className="part part_three">
+          <MyImage
+            src={require("@static/icon/bugle.png")}
+            className="part_three_bugle"
+          ></MyImage>
+          <Carousel
+            className="part_three_content_wrap"
+            vertical
+            dots={false}
+            dragging={false}
+            swiping={false}
+            autoplay
+            infinite
+          >
+            {this.state.noticeList.map(i => (
+              <div key={i.id} className="part_three_content_item" onClick={() => { this.setState({ info: i, showContent: true }) }}>
+                {i.title}
+              </div>
+            ))}
+          </Carousel>
+        </div>
+        }
 
 
       </div>
