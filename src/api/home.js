@@ -46,7 +46,7 @@ export function banner(type) {
     //     params: { type }
     // })
 
-    let res = {"errcode":0,"msg":"","res":[{"id":8,"image":"\/imgs\/base\/15855474627730300.jpg","url":"","order":"1","create_time":"2020-03-27 10:56:19","type":2,"is_del":0}]}
+    let res = {"errcode":0,"msg":"","res":[{"id":8,"image":"http://cagi.315red.com.cn/imgs/base/15855474627730300.jpg","url":"","order":"1","create_time":"2020-03-27 10:56:19","type":2,"is_del":0}]}
     return new Promise((resolve, reject) => {
         resolve(res)
     })
@@ -61,7 +61,7 @@ export function news({ page, pagesize }) {
     //     params: { page, pagesize }
     // })
 
-    let res = {"errcode":0,"msg":"成功","res":{"count":2,"page":"1","pagesize":"6","data":[{"id":1,"title":"新闻标题","image":"\/imgs\/base\/15852069124343835.jpg","content":"<p>新闻内容内容<\/p>\n<p>&nbsp;<\/p>","create_time":"2020-03-10 15:26:13","desc":"新闻简介","order":1,"is_del":0},{"id":2,"title":"新闻测试","image":"\/imgs\/base\/15852069251840149.jpg","content":"<p>这里是新闻内容<\/p>\n<p><img class=\"wscnph\" src=\"\/imgs\/file\/20200326\/1c3eee346e4a293d0d59cf54350cfa1e.jpg\" \/><\/p>","create_time":"2020-03-26 14:59:07","desc":"1","order":2,"is_del":0}]}}
+    let res = {"errcode":0,"msg":"成功","res":{"count":2,"page":"1","pagesize":"6","data":[{"id":1,"title":"新闻标题","image":"http://cagi.315red.com.cn/imgs/base/15852069124343835.jpg","content":"<p>新闻内容内容<\/p>\n<p>&nbsp;<\/p>","create_time":"2020-03-10 15:26:13","desc":"新闻简介","order":1,"is_del":0},{"id":2,"title":"新闻测试","image":"http://cagi.315red.com.cn/imgs/base/15852069251840149.jpg","content":"<p>这里是新闻内容<\/p>\n<p><img class=\"wscnph\" src=\"http://cagi.315red.com.cn/imgs/file/20200326/1c3eee346e4a293d0d59cf54350cfa1e.jpg\" \/><\/p>","create_time":"2020-03-26 14:59:07","desc":"1","order":2,"is_del":0}]}}
     return new Promise((resolve, reject) => {
         resolve(res)
     })
@@ -70,9 +70,13 @@ export function news({ page, pagesize }) {
 
 // 创投 套餐列表
 export function investmentList() {
-    return request({
-        url: 'api/investment/investmentList',
-        method: 'get'
+    // return request({
+    //     url: 'api/investment/investmentList',
+    //     method: 'get'
+    // })
+    let res = {"errcode":0,"msg":"","res":[{"id":1,"name":"套餐A","base_price":"3000.00","price":"300.00","rate":"130.00","is_show":1,"is_del":0,"rank_id":1},{"id":2,"name":"套餐B","base_price":"15000.00","price":"1500.00","rate":"150.00","is_show":1,"is_del":0,"rank_id":1},{"id":3,"name":"套餐C","base_price":"30000.00","price":"3000.00","rate":"200.00","is_show":1,"is_del":0,"rank_id":1},{"id":4,"name":"套餐D","base_price":"100000.00","price":"10000.00","rate":"250.00","is_show":1,"is_del":0,"rank_id":1},{"id":5,"name":"套餐E","base_price":"300000.00","price":"30000.00","rate":"300.00","is_show":1,"is_del":0,"rank_id":5}]}
+    return new Promise((resolve, reject) => {
+        resolve(res)
     })
 }
 

@@ -104,10 +104,15 @@ export function transferRecordList({ type }) {
 
 // 账户余额
 export function userAccount() {
-    return request({
-        url: 'api/account/userAccount',
-        method: 'get'
+    // return request({
+    //     url: 'api/account/userAccount',
+    //     method: 'get'
+    // })
+    var res = {"errcode":0,"msg":"","res":{"1":"81300.0000","2":"3.0000","3":"0.0000","4":"0.0000","5":"408100.0000"}}
+    return new Promise((resolve, reject) => {
+        resolve(res)
     })
+
 }
 
 // 财务明细 类型：0=全部，1=usdt

@@ -1,6 +1,105 @@
+// module.exports = {"wrap":"personal_wrap__2yEAX","header":"personal_header__1fW4K","part":"personal_part__1_6Xz","part_title":"personal_part_title__szT5W",
+  // "remain":"personal_remain__1r32h","remain_item":"personal_remain_item__36Hbz","balance":"personal_balance__23_0t","balance_item":"personal_balance_item__OZDgJ",
+  // "balance_item_logo":"personal_balance_item_logo__SyGeu","balance_item_info":"personal_balance_item_info__2Yyan","control":"personal_control__1ukYl",
+  // "control_item":"personal_control_item__3aN50","control_item_img":"personal_control_item_img__3X0mM","control_item_des":"personal_control_item_des__1Lvcx"};
+
 .showtest {
   display: block;
 }
 .hidentest {
   display: none;
+}
+
+.wrap{
+  border-top: 0.2667vw solid #121010;
+  border-bottom: 0.2667vw solid #121010;
+  
+  .content{
+    .part{
+      background-color: #171414;
+      margin: 2.6667vw 0;
+      border-top: 0.2667vw solid #171414;
+      width: 100%;
+
+      .part_title{
+        height: 0;
+        overflow: visible;
+      }
+      .remain{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 21.3333vw;
+        margin-top: -1.3333vw;
+      
+        .remain_item{
+          line-height: 5.3333vw;
+          text-align: center;
+        
+          div:first-child{
+            line-height: 6.6667vw;
+          }
+          div:last-child{
+            color: #999;
+            font-size: 2.6667vw;
+          }
+        }
+        
+      }
+      .balance{
+        display: flex;
+        flex-wrap: wrap;
+        height: 40vw;
+        .balance_item{
+          height: 50%;
+          width: 50%;
+          display: flex;
+          align-items: center;
+          padding-left: 5.3333vw;
+          box-sizing: border-box;
+          .balance_item_logo{
+            width: 8.8vw;
+            height: 8.8vw;
+            margin-right: 2.6667vw;
+          }
+          .balance_item_info{
+            line-height: 5.3333vw;
+            div:first-child{
+              color: #999;
+              font-size: 3.2vw;
+            }
+            // div:last-child{
+            //   color: #999;
+            //   font-size: 2.6667vw;
+            // }
+          }
+        }
+      }
+      .control{
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 2.6667vw;
+        .control_item{
+          width: 25%;
+          height: 21.3333vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .control_item_img{
+            width: 5.6vw;
+            height: 5.6vw;
+            color: #ebb807;
+          }
+          .control_item_des{
+            height: 3.7333vw;
+            padding: 2.6667vw 0;
+            box-sizing: content-box;
+            color: #ccc;
+            font-size: 3.2vw;
+          }
+        }
+      }
+    }
+  }
 }

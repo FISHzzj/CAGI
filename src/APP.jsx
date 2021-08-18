@@ -9,6 +9,7 @@ import Search from './pages/search/index.jsx';
 import Shop from './pages/shop/index.jsx';
 import  Ecosystem  from './pages/ecosystem/index.jsx';
 import  News  from './pages/news/index.jsx';
+import  JybInvest  from './pages/home/jybInvest/jybInvest.jsx';
 import { TabBar } from "antd-mobile";
 import { MyImage } from "@component/MyImage/MyImage";
 // import { Index as IndexPage } from "./index/index";
@@ -20,7 +21,7 @@ import { withRouter } from 'react-router-dom';
 import { NavLink, Switch, Route, Redirect } from 'react-router-dom';
 const cache = {};
 function importAll (r) {
-  console.log(r,'r')
+  // console.log(r,'r')
   r.keys().forEach(key => cache[key] = r(key));
 }
 
@@ -36,10 +37,11 @@ class App extends React.Component {
         '/category',
         '/buy',
         'shopcart',
-        'person',
+        '/person',
         '/search',
         '/ecosystem',
-        '/news'
+        '/news',
+        'jyb-invest'
       ],
       selectedTab: this.props.match.params.selectedTab || "index",
       hidden: false,
@@ -65,25 +67,64 @@ class App extends React.Component {
 
       <div className="app_container">
          {/* 用户头像部分 */}
-         <div
-          className="account"
-          onClick={() => {
-            this.props.history.push("/personal/intro");
-          }}
-        >
-          <MyImage src={this.state.userInfo.head_image} className="avatar"></MyImage>
-          <div className="account_info">
-            <div>
-              <span>{this.state.userInfo.nick_name}</span>
-              <span className="rank_span">{this.state.userInfo.rank_name}</span>
+         {showFooter ? (
+          <div
+            className="account"
+            onClick={() => {
+              this.props.history.push("/personal/intro");
+            }}
+          >
+            <MyImage src={this.state.userInfo.head_image} className="avatar"></MyImage>
+            <div className="account_info">
+              <div>
+                <span>{this.state.userInfo.nick_name}</span>
+                <span className="rank_span">{this.state.userInfo.rank_name}</span>
+              </div>
+              <div>{this.state.userInfo.member}</div>
             </div>
-            <div>{this.state.userInfo.member}</div>
+            {/* <div className={Css.account_arrow}>></div> */}
           </div>
-          {/* <div className={Css.account_arrow}>></div> */}
-        </div>
+          ) : null}
+          <Switch>
+            <Route path="/home" component={Home}></Route>
+            <Route path="/ecosystem" component={Ecosystem}></Route>
+            <Route path="/news" component={News}></Route>
+            <Route path="/shopcart" component={Shopcart}></Route>
+            <Route path="/person" component={Person}></Route>
+            <Route path="/search" component={Search}></Route>
+            <Route path="/shop" component={Shop}></Route>
+            <Route path="/jyb-invest" component={JybInvest}></Route>
+            <Redirect to="/home"></Redirect>
+          </Switch>
+      
+
+        {showFooter ? (
+           <footer className="footer">
+             <NavLink to="/home" activeClassName="active" className="link">
+               <i className="material-icons">favorite_border</i>
+               <span>首页</span>
+             </NavLink>
+             <NavLink to="/ecosystem" activeClassName="active" className="link">
+               <i className="material-icons">reorder</i>
+               <span>生态</span>
+             </NavLink>
+             <NavLink to="/news" activeClassName="active" className="link">
+               <i className="material-icons">card_giftcard</i>
+             <span>新闻</span>
+             </NavLink>
+            {/* <NavLink to="/shopcart" activeClassName="active" className="link">
+               <i className="material-icons">bookmark_border</i>
+             <span>购物车</span>
+            </NavLink> */}
+            <NavLink to="/person" activeClassName="active" className="link">
+              <i className="material-icons">account_box</i>
+              <span>我的</span>
+            </NavLink>
+          </footer>
+        ) : null}
 
         {/* 选项卡页 */}
-        <TabBar
+        {/* <TabBar
           barTintColor="#121010"
           unselectedTintColor="#6F7070"
           tintColor="#EBB807"
@@ -221,7 +262,7 @@ class App extends React.Component {
           </TabBar.Item>
         </TabBar>
 
-        {this.state.selectedTab === "index" && <MyImage onClick={() => this.props.history.push('/index/box')} src={require('@static/icon/home_redpack.png')} className="redpack"></MyImage>}
+        {this.state.selectedTab === "index" && <MyImage onClick={() => this.props.history.push('/index/box')} src={require('@static/icon/home_redpack.png')} className="redpack"></MyImage>} */}
 
 
       </div>

@@ -1,13 +1,13 @@
 import React from "react";
-import "./MyImage.module.scss";
+import "./MyImage.less";
 
 class MyImage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
+    // console.log(props)
     this.defaultSrc = props.defaultSrc || require("../../../static/img/img_holder.png");
     this.state = {
-      src: props.src || this.defaultSrc
+      src: props.src || this.defaultSrc,
     };
   }
 
@@ -34,6 +34,7 @@ class MyImage extends React.Component {
         {...this.props}
         src={this.state.src}
         alt={this.props.alt}
+   
         onError={() => {
           this.setState({ src: this.defaultSrc });
         }}

@@ -35,12 +35,12 @@ module.exports = {
           {
             test: /\.(js|jsx)$/,
             use: [
-              {
-                loader: 'thread-loader',
-                options: {
-                  workers: os.cpus().length
-                }
-              },
+              // {
+              //   loader: 'thread-loader',
+              //   options: {
+              //     workers: os.cpus().length
+              //   }
+              // },
               {
                 loader: 'babel-loader',
                 options: {
@@ -77,20 +77,6 @@ module.exports = {
                 options: {
                   modules: false,
                   localIdentName: '[local]--[hash:base64:5]'
-                }
-              },
-              {
-                loader: "postcss-loader",
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      flexbox:'no-2009',
-                    }),
-                    px2rem({remUnit:75})
-                    
-                  ]
                 }
               },
               {

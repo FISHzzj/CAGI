@@ -37,6 +37,7 @@ class App extends React.Component {
     
       componentDidMount() {
         setTimeout(() => this.genData(this.page, this.pagesize), 0);
+    
       }
     
       // 获取新闻列表
@@ -46,14 +47,15 @@ class App extends React.Component {
         }
         this.setState({ refreshing: true });
         news({ page, pagesize }).then(resp => {
-          if (resp.res.length === 0) {
+          console.log(resp.res)
+          if (resp.res.data.length === 0) {
             this.noMore = true;
             this.setState({ refreshing: false });
             return false;
           }
           this.page++;
           this.setState({
-            data: this.state.data.concat(resp.res),
+            data: this.state.data.concat(resp.res.data),
             refreshing: false
           });
         });
@@ -64,47 +66,48 @@ class App extends React.Component {
             <div className="wrapper">
                 {/* banner栏位 */}
                 <div className="banner">
-                <Carousel
-                    infinite
-                >
-                    {this.state.bannerList.map(i => (
-                    <MyImage
-                        key={i.id}
-                        src={i.image}
-                        onLoad={() => {
-                        window.dispatchEvent(new Event('resize'));
-                        }}
-                        className="banner_img"
-                    ></MyImage>
-                    ))}
-                </Carousel>
+                  <Carousel
+                      className="my-carousel"
+                      infinite
+                  >
+                      {this.state.bannerList.map((i) => (
+                      <MyImage
+                          key={i.id}
+                          src={i.image}
+                          onLoad={() => {
+                          window.dispatchEvent(new Event('resize'));
+                          }}
+                          className="banner_img"
+                      ></MyImage>
+                      ))}
+                  </Carousel>
                 </div>
         
                 {/* 新闻页-列表 */}
                 <div className="list_wrap">
-                <PullToRefresh
-                    className="list_container"
-                    indicator={{
-                    deactivate: "上拉可以刷新"
-                    }}
-                    direction="up"
-                    refreshing={this.state.refreshing}
-                    onRefresh={() => this.genData(this.page, this.pagesize)}
-                >
-                    {this.state.data.map(i => (
-                    <div key={i.id} className="item_profile" onClick={() => { this.setState({ info: i, showContent: true }) }}>
-                        <MyImage
-                        src={i.image}
-                        className="item_image"
-                        ></MyImage>
-                        <div className="item_des">
-                            <div className="item_header">{i.title}</div>
-                            <div className="item_content">{i.desc}</div>
-                            <div className="item_time">{i.create_time}</div>
-                        </div>
-                    </div>
-                    ))}
-                </PullToRefresh>
+                  <PullToRefresh
+                      className="list_container"
+                      indicator={{
+                        deactivate: "上拉可以刷新"
+                      }}
+                      direction="up"
+                      refreshing={this.state.refreshing}
+                      onRefresh={() => this.genData(this.page, this.pagesize)}
+                  >
+                      {this.state.data.map(i => (
+                      <div key={i.id} className="item_profile" onClick={() => { this.setState({ info: i, showContent: true }) }}>
+                          <MyImage
+                          src={i.image}
+                          className="item_image"
+                          ></MyImage>
+                          <div className="item_des">
+                              <div className="item_header">{i.title}</div>
+                              <div className="item_content">{i.desc}</div>
+                              <div className="item_time">{i.create_time}</div>
+                          </div>
+                      </div>
+                      ))}
+                  </PullToRefresh>
                 </div>
         
                 {this.state.showContent && (

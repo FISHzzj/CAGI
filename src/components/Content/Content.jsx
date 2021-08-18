@@ -1,7 +1,7 @@
 import React from "react";
 import { NavBar, Icon } from "antd-mobile";
 import { MyImage } from '@component/MyImage/MyImage'
-import Css from "./content.module.scss";
+import "./content.less";
 
 class Content extends React.Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class Content extends React.Component {
 
     render() {
         return (
-            <div className={Css.wrap}>
+            <div className="wrap">
                 <NavBar
                     icon={<Icon type="left" size="xs" />}
                     onLeftClick={() => {
@@ -38,13 +38,13 @@ class Content extends React.Component {
                     {['', '新闻详情', '公告', '留言详情'][this.props.type]}
                 </NavBar>
 
-                <div className={Css.content_wrap}>
+                <div className="content_wrap_next">
 
-                    <div className={Css.title}>{this.state.title}</div>
+                    <div className="title">{this.state.title}</div>
 
-                    <div className={Css.time}>{this.state.create_time}</div>
+                    <div className="time">{this.state.create_time}</div>
 
-                    <div className={Css.content}>
+                    <div className="content">
                         {this.state.image && this.state.type != 1 && <MyImage src={this.state.image} className='wscnph'></MyImage>}
                         <div dangerouslySetInnerHTML={{ __html: this.state.content }}></div>
                     </div>

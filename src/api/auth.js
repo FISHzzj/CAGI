@@ -38,10 +38,15 @@ export function forgetPassword({ phone, member, password, password_re, pay_passw
 
 
 export function userInfo() {
-    return request({
-        url: 'api/user/userInfo',
-        method: 'get'
-    })
+    // return request({
+    //     url: 'api/user/userInfo',
+    //     method: 'get'
+    // })
+
+    var res = {"errcode":0,"msg":"","res":{"rank_name":"J0","nick_name":"ben05","head_image":"","member":"CAGI636729","uuid":"JLOAJIR3","phone":"6544445678","group_person_count":0,"group_achievement_money":"0.0000","achievement_money":"18700.0000","is_investment":1,"investment_money":"408100.0000"}}
+    return new Promise((resolve, reject) => {
+        resolve(res)
+      })
 }
 
 
