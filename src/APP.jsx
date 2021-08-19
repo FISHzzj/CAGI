@@ -11,6 +11,18 @@ import  Ecosystem  from './pages/ecosystem/index.jsx';
 import  News  from './pages/news/index.jsx';
 import  JybInvest  from './pages/home/jybInvest/jybInvest.jsx';
 import  investRecord  from './pages/home/investRecord/investRecord.jsx';
+import  usdtInvest  from './pages/home/usdtInvest/usdtInvest.jsx';
+import  profit  from './pages/home/profit/profit.jsx';
+import  transfer  from './pages/home/transfer/transfer.jsx';
+import  transferrecord  from './pages/home/transfer/record/record.jsx';
+import  recordDetail  from './pages/home/transfer/record/recordDetail.jsx';
+import  recordList  from './pages/home/transfer/record/recordList.jsx';
+import  recharge  from './pages/home/recharge/recharge.jsx';
+import  rechargeRecord  from './pages/home/recharge/rechargeRecord.jsx';
+import  uploadVoucher  from './pages/home/recharge/uploadVoucher.jsx';
+import  WithdrawWrapper  from './pages/home/withdraw/withdraw.jsx';
+
+
 
 
 import { TabBar } from "antd-mobile";
@@ -46,6 +58,17 @@ class App extends React.Component {
         '/news',
         'jyb-invest',
         'invest-record',
+        'ustd-invest',
+        'profit',
+        'transfer',
+        'transferrecord',
+        'recordDetail',
+        'recordList',
+        'recharge',
+        'rechargeRecord',
+        'uploadVoucher',
+        'withdraw',
+
       ],
       selectedTab: this.props.match.params.selectedTab || "index",
       hidden: false,
@@ -99,6 +122,16 @@ class App extends React.Component {
             <Route path="/shop" component={Shop}></Route>
             <Route path="/jyb-invest" component={JybInvest}></Route>
             <Route path="/invest-record" component={investRecord}></Route>
+            <Route path="/ustd-invest" component={usdtInvest}></Route>
+            <Route path="/profit" component={profit}></Route>
+            <Route path="/transfer" component={transfer}></Route>
+            <Route path="/transferrecord" component={transferrecord}></Route>
+            <Route path="/recordDetail" component={recordDetail}></Route>
+            <Route path="/recordList" component={recordList}></Route>
+            <Route path="/recharge" component={recharge}></Route>
+            <Route path="/rechargeRecord" component={rechargeRecord}></Route>
+            <Route path="/uploadVoucher" component={uploadVoucher}></Route>
+            <Route path="/withdraw" component={WithdrawWrapper}></Route>
             <Redirect to="/home"></Redirect>
           </Switch>
       

@@ -196,7 +196,7 @@ class App extends React.Component {
           <div
             className="part_one_item"
             onClick={() => {
-              this.props.history.push("/home/ustd-invest");
+              this.props.history.push("/ustd-invest");
             }}
           >
             <MyImage
@@ -208,7 +208,7 @@ class App extends React.Component {
           <div
             className="part_one_item"
             onClick={() => {
-              this.props.history.push("/home/profit");
+              this.props.history.push("/profit");
             }}
           >
             <MyImage
@@ -220,7 +220,7 @@ class App extends React.Component {
           <div
             className="part_one_item"
             onClick={() => {
-              this.props.history.push("/home/transfer");
+              this.props.history.push("/transfer");
             }}
           >
             <MyImage
@@ -234,7 +234,7 @@ class App extends React.Component {
         <div className="part part_two">
           <div
             className="part_two_item"
-            onClick={() => this.props.history.push("/home/recharge")}
+            onClick={() => this.props.history.push("/recharge")}
           >
             <MyImage
               src={require("@static/icon/home_recharge.png")}
@@ -245,7 +245,7 @@ class App extends React.Component {
           <div className="part_two_seperate"></div>
           <div
             className="part_two_item"
-            onClick={() => this.props.history.push("/home/withdraw")}
+            onClick={() => this.props.history.push("/withdraw")}
           >
             <MyImage
               src={require("@static/icon/home_withdraw.png")}

@@ -103,11 +103,17 @@ export function investmentRecord() {
 }
 
 export function awardRecordList({ page, pagesize, award_id }) {
-    return request({
-        url: 'api/award/awardRecordList',
-        method: 'get',
-        params: { page, pagesize, award_id }
+    // return request({
+    //     url: 'api/award/awardRecordList',
+    //     method: 'get',
+    //     params: { page, pagesize, award_id }
+    // })
+    var res = {"errcode":0,"msg":"","res":{"data":[{"currency_name":"JYB","money":"3000.0000","remark":"会员CAGI827031创投,获得分销奖励","create_time":"2020-04-01 23:17:17","award_id":1,"award_name":"静态分红奖励"},{"currency_name":"JYB","money":"633.9125","remark":"会员CAGI307464创投,获得分销奖励","create_time":"2020-04-01 23:11:09","award_id":1,"award_name":"静态分红奖励"}],"count":2,"page":"1","pagesize":"6"}}
+    
+    return new Promise((resolve, reject) => {
+        resolve(res)
     })
+
 }
 
 // 推荐人员信息

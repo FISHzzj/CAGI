@@ -1,0 +1,51 @@
+// extracted by mini-css-extract-plugin
+// module.exports = {"wrap":"profit_wrap__1xkQi","list_wrap":"profit_list_wrap__2saFs","item":"profit_item__3CYDB","item_left":"profit_item_left__3JX9S","item_left_redpack":"profit_item_left_redpack__rGIq-","item_left_info":"profit_item_left_info__27vE9","item_right":"profit_item_right__3m71x"};
+
+.wrap {
+    height: 100%;
+    overflow: hidden;
+  
+    .list_wrap {
+      height: calc(100% - 12vw);
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+  
+      .item {
+        margin: 2.6667vw;
+        background-color: #171414;
+        border-radius: 1.0667vw;
+        height: 20.8vw;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2.6667vw;
+        align-items: center;
+  
+        &_left {
+          display: flex;
+          align-items: center;
+  
+          &_redpack {
+            height: 9.0667vw;
+            width: 8vw;
+          }
+  
+          &_info {
+            margin-left: 4vw;
+            
+            :first-child {
+                font-size: 3.7333vw;
+                padding-bottom: 2.1333vw;
+            }
+            :last-child {
+                font-size: 2.6667vw;
+                color: #999;
+            }
+          }
+        }
+  
+        &_right {
+          color: #36db97;
+        }
+      }
+    }
+  }

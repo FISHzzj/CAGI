@@ -1,0 +1,191 @@
+import React from "react";
+import {
+  NavBar,
+  Icon,
+  List,
+  InputItem,
+  ActionSheet,
+  Button,
+  Toast
+} from "antd-mobile";
+import { createForm } from "rc-form";
+import "./transfer.less";
+
+import { configTransferList, userAccount, transferCommit } from "@api/asset";
+
+class Transfer extends React.Component {
+  constructor(props) {
+    super(props);
+    configTransferList().then(resp => {
+      this.setState({
+        currencyOptions: resp.map(i => i.name)
+      });
+      this.currencyList = resp;
+    });
+    userAccount().then(resp => {
+      this.userAccount = resp.res;
+    });
+  }
+
+  state = {
+    currencyOptions: [],
+    selectedCurrency: "请选择",
+    selectedCurrencyId: "",
+    accountRemain: "0.00",
+    feeMoney: 0,
+    realMoney: 0,
+    moneyTip: "请输入转账金额",
+    money: ""
+  };
+
+  showActionSheet = () => {
+    const BUTTONS = this.state.currencyOptions;
+    ActionSheet.showActionSheetWithOptions(
+      {
+        options: BUTTONS,
+        maskClosable: true,
+        message: "选择币种",
+        "data-seed": "logId"
+      },
+      buttonIndex => {
+        let currencyId = this.currencyList.find(
+          i => i.name === BUTTONS[buttonIndex]
+        )?.currency_id;
+
+        this.setState({
+          selectedCurrency: BUTTONS[buttonIndex] || '请选择',
+          accountRemain: this.userAccount[currencyId] || '0.00',
+          selectedCurrencyId: currencyId,
+          feeMoney: this.currencyList.find(i => i.name === BUTTONS[buttonIndex])?.rate
+        });
+      }
+    );
+  };
+
+  moneyChange = value => {
+    if (this.state.selectedCurrencyId === "") {
+      this.setState({ moneyTip: "请先选择转账币种" });
+      return false;
+    }
+
+    this.setState({
+      money: value,
+      realMoney: this.computeRealMoney(value)
+    });
+  };
+
+  computeRealMoney(value) {
+    if (isNaN(value)) {
+      return "-";
+    }
+    let realMoney = value - this.state.feeMoney;
+    if (realMoney < 0) {
+      return 0;
+    }
+    return realMoney;
+  }
+
+  submit = () => {
+    const target_member = this.props.form.getFieldValue("target_member");
+    if (!target_member?.trim()) {
+      Toast.info("请输入会员编号", 2, null, false);
+      return false;
+    }
+
+    if (
+      isNaN(this.state.money) ||
+      this.state.money === "" ||
+      this.state.money <= this.state.feeMoney
+    ) {
+      Toast.info("请输入正确的转账金额", 2, null, false);
+      return false;
+    }
+
+    const pay_password = this.props.form.getFieldValue("pay_password");
+    if (!pay_password?.trim()) {
+      Toast.info("请输入支付密码", 2, null, false);
+      return false;
+    }
+
+    transferCommit({
+      target_member,
+      money: this.state.money,
+      pay_password,
+      transfer_id: this.state.selectedCurrencyId
+    }).then(resp => {
+      Toast.info("操作成功", 2, () => {
+        this.props.history.push("/transferrecord");
+      });
+    });
+  };
+
+  render() {
+    const { getFieldProps } = this.props.form;
+
+    return (
+      <div className="wrap">
+        <NavBar
+          icon={<Icon type="left" size="xs" />}
+          onLeftClick={() => this.props.history.go(-1)}
+          rightContent={[
+            <i
+
+              key="1"
+              className="iconfont icon-history history"
+              onClick={() => {
+                this.props.history.push("/transferrecord");
+              }}
+            ></i>
+          ]}
+        >
+          转账管理
+        </NavBar>
+
+        <List className="form_wrap">
+          <InputItem
+            {...getFieldProps("target_member")}
+            clear
+            placeholder="请输入会员编号"
+          >
+            会员编号
+          </InputItem>
+          <List.Item
+            extra={this.state.selectedCurrency}
+            arrow="horizontal"
+            onClick={this.showActionSheet}
+          >
+            货币类型
+          </List.Item>
+          <List.Item extra={this.state.accountRemain}>账户余额</List.Item>
+          <InputItem
+            value={this.state.money}
+            clear
+            placeholder={this.state.moneyTip}
+            onChange={this.moneyChange}
+            onBlur={() => this.setState({ moneyTip: "请输入转账金额" })}
+            type="money"
+          >
+            转账金额
+          </InputItem>
+          <List.Item extra={this.state.realMoney}>实际金额</List.Item>
+          <List.Item extra={this.state.feeMoney}>手续费</List.Item>
+          <InputItem
+            {...getFieldProps("pay_password")}
+            placeholder="请输入二级密码"
+            type="password"
+            clear
+          >
+            输入二级密码
+          </InputItem>
+        </List>
+
+        <Button onClick={this.submit} className="submit">
+          提交
+        </Button>
+      </div>
+    );
+  }
+}
+const TransferWrapper = createForm()(Transfer);
+
+export default TransferWrapper;
