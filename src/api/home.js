@@ -82,18 +82,23 @@ export function investmentList() {
 
 // 投资 类型;1=usdt投资,2=jyb投资
 export function investmentConfirm({ type, investment_id }) {
-    return request({
-        url: 'api/investment/investmentConfirm',
-        method: 'post',
-        data: { type, investment_id }
-    })
+    // return request({
+    //     url: 'api/investment/investmentConfirm',
+    //     method: 'post',
+    //     data: { type, investment_id }
+    // })
 }
 
 // 投资记录
 export function investmentRecord() {
-    return request({
-        url: 'api/investment/investmentRecord',
-        method: 'get'
+    // return request({
+    //     url: 'api/investment/investmentRecord',
+    //     method: 'get'
+    // })
+
+    var res = {"errcode":0,"msg":"","res":[{"currency_name":"USDT","investment_money":"1500.0000","create_time":"2021-08-12 11:39:08","investment_base_money":"15000.0000","currency_id":1},{"currency_name":"USDT","investment_money":"10000.0000","create_time":"2021-08-09 11:08:09","investment_base_money":"100000.0000","currency_id":1},{"currency_name":"USDT","investment_money":"300.0000","create_time":"2021-08-06 15:37:34","investment_base_money":"3000.0000","currency_id":1},{"currency_name":"USDT","investment_money":"300.0000","create_time":"2021-08-06 15:37:30","investment_base_money":"3000.0000","currency_id":1},{"currency_name":"USDT","investment_money":"300.0000","create_time":"2021-08-06 15:37:29","investment_base_money":"3000.0000","currency_id":1},{"currency_name":"USDT","investment_money":"300.0000","create_time":"2021-08-03 23:56:20","investment_base_money":"3000.0000","currency_id":1},{"currency_name":"USDT","investment_money":"3000.0000","create_time":"2020-04-01 23:24:15","investment_base_money":"30000.0000","currency_id":1},{"currency_name":"USDT","investment_money":"3000.0000","create_time":"2020-04-01 23:24:03","investment_base_money":"30000.0000","currency_id":1}]}
+    return new Promise((resolve, reject) => {
+        resolve(res)
     })
 }
 

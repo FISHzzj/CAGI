@@ -11,13 +11,15 @@ class JybInvest extends React.Component {
   constructor(props) {
     super(props);
     investmentList().then(resp => {
+      console.log(resp)
       this.setState({
-        investList: resp,
-        selectedId: resp[0].id
+        investList: resp.res,
+        selectedId: resp.res[0].id
       });
     });
     userAccount().then(resp => {
-      this.setState({ accountInfo: resp });
+      console.log(resp)
+      this.setState({ accountInfo: resp.res });
     });
   }
 
@@ -59,7 +61,7 @@ class JybInvest extends React.Component {
               key="1"
               className={`iconfont icon-history history`}
               onClick={() => {
-                this.props.history.push("/index/invest-record");
+                this.props.history.push("/invest-record");
               }}
             ></i>
           ]}

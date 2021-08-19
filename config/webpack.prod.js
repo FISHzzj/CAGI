@@ -49,7 +49,7 @@ module.exports = {
                     //tree shaking 按需加载babel-polifill
                     [
                       '@babel/preset-env',
-                      { modules: false, useBuiltIns: 'false', corejs: 2 }
+                      { modules: false, useBuiltIns: false, corejs: 2 }
                     ]
                   ],
                   plugins: [
@@ -195,7 +195,13 @@ module.exports = {
   ],
   mode: 'production',
   resolve: {
-    extensions: ['*', '.js', '.json', '.jsx']
+    extensions: ['*', '.js', '.json', '.jsx'],
+    alias: {
+      '@src': resolve('src'),
+      '@component': resolve('src/components'),
+      '@api': resolve('src/api'),
+      '@static': resolve('static'),
+    }
   },
   optimization: {
     runtimeChunk: true,

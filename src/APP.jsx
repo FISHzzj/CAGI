@@ -10,6 +10,9 @@ import Shop from './pages/shop/index.jsx';
 import  Ecosystem  from './pages/ecosystem/index.jsx';
 import  News  from './pages/news/index.jsx';
 import  JybInvest  from './pages/home/jybInvest/jybInvest.jsx';
+import  investRecord  from './pages/home/investRecord/investRecord.jsx';
+
+
 import { TabBar } from "antd-mobile";
 import { MyImage } from "@component/MyImage/MyImage";
 // import { Index as IndexPage } from "./index/index";
@@ -41,7 +44,8 @@ class App extends React.Component {
         '/search',
         '/ecosystem',
         '/news',
-        'jyb-invest'
+        'jyb-invest',
+        'invest-record',
       ],
       selectedTab: this.props.match.params.selectedTab || "index",
       hidden: false,
@@ -94,6 +98,7 @@ class App extends React.Component {
             <Route path="/search" component={Search}></Route>
             <Route path="/shop" component={Shop}></Route>
             <Route path="/jyb-invest" component={JybInvest}></Route>
+            <Route path="/invest-record" component={investRecord}></Route>
             <Redirect to="/home"></Redirect>
           </Switch>
       

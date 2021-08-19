@@ -1,2 +1,82 @@
 // extracted by mini-css-extract-plugin
 // module.exports = {"wrap":"jybInvest_wrap__3Kj0H","remain_wrap":"jybInvest_remain_wrap__3pzZB","remain_bg_top":"jybInvest_remain_bg_top__3kWtl","remain":"jybInvest_remain__1fkpH","content":"jybInvest_content__1xUqc","item_wrap":"jybInvest_item_wrap__3zllO","item":"jybInvest_item__3s1hT","item_name":"jybInvest_item_name__2YN7h","item_color":"jybInvest_item_color__3OTnY","submit":"jybInvest_submit__RC3J8"};
+
+
+.wrap{
+    .remain_wrap{
+        height: 34.6667vw;
+        width: 100%;
+        position: relative;
+        .remain_bg_top{
+            height: 17.3333vw;
+            background-color: #ebb807;
+        }
+        .remain{
+            margin: 0 auto;
+            width: 93.3333vw;
+            height: 26.6667vw;
+            border-radius: 1.6vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: #171414;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            div:first-child{
+                color: #aaa;
+                line-height: 5.3333vw;
+            }
+            div:nth-child(2){
+                font-size: 4.8vw;
+                line-height: 6.9333vw;
+            }
+        }
+       
+    }
+    .content{
+        padding: 4vw 0;
+        display: flex;
+        flex-wrap: wrap;
+        .item_wrap{
+            width: 33%;
+            height: 26.1333vw;
+            padding: 3.2vw 2.1333vw;
+            box-sizing: border-box;
+            .item{
+                width: 100%;
+                height: 100%;
+                border-radius: 1.0667vw;
+                border: 0.2667vw solid #666;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 3.2vw;
+                color: #aaa;
+                background-color: #171414;
+                .item_name{
+                    color: #fff;
+                    padding-bottom: .13333rem;
+                    >span{
+                        line-height: .42667rem;
+                    }
+                }
+                >span{
+                    line-height: .42667rem;
+
+                }
+            }
+        }
+        .item_color{
+            color: #ebb807;
+        }
+    }
+    .submit{
+        margin: 8% 10%;
+        background-color: #ebb807;
+        font-size: 4vw;
+    }
+}

@@ -1,0 +1,35 @@
+// extracted by mini-css-extract-plugin
+// module.exports = {"wrap":"investRecord_wrap__2YAYG","list_wrap":"investRecord_list_wrap__jvdkR","item":"investRecord_item__Rxx9B","item_left":"investRecord_item_left__1NwhU","item_right":"investRecord_item_right__2QXyY"};
+
+.wrap{
+    height: 100%;
+    overflow: hidden;
+    .list_wrap{
+        height: calc(100% - 12vw);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        .item{
+            margin: 2.6667vw;
+            background-color: #171414;
+            border-radius: 1.0667vw;
+            height: 18.6667vw;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2.6667vw;
+            align-items: center;
+            .item_left{
+                div:first-child{
+                    font-size: 3.7333vw;
+                    padding-bottom: 2.1333vw;
+                }
+                div:last-child{
+                    font-size: 2.6667vw;
+                    color: #999;
+                }
+            }
+            .item_right{
+                color: #36db97;
+            }
+        }
+    }
+}
