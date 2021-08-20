@@ -92,7 +92,7 @@ class App extends React.Component{
                     <div
                       className="control_item"
                       onClick={() => {
-                        this.props.history.push("/personal/finance");
+                        this.props.history.push("/finance");
                       }}
                     >
                       <MyImage
@@ -104,7 +104,7 @@ class App extends React.Component{
                     <div
                       className="control_item"
                       onClick={() => {
-                        this.props.history.push("/personal/earning");
+                        this.props.history.push("/earning");
                       }}
                     >
                       <MyImage
@@ -116,7 +116,7 @@ class App extends React.Component{
                     <div
                       className="control_item"
                       onClick={() => {
-                        this.props.history.push("/personal/exchange");
+                        this.props.history.push("/exchange");
                       }}
                     >
                       <MyImage

@@ -1,27 +1,30 @@
 import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
-import RecordList  from "./recordList";
-import "./record.less";
-import { createForm } from "rc-form";
+import  EarningList  from "./earningList";
+import "./earning.less";
 
-class WithdrawRecord extends React.Component {
+class Earning extends React.Component {
   navTab = [
-    { title: "已审核", sub: "1" },
-    { title: "待审核", sub: "2" }
+    { title: "全部", sub: 0 },
+    { title: "销售奖", sub: 2 },
+    { title: "团队奖", sub: 3 },
+    { title: "管理奖", sub: 4 },
+    { title: "辅导奖", sub: 5 }
   ];
 
   render() {
     return (
-      <div className="wrap_record">
+      <div className="wrap">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          提币记录
+          团队收益
         </NavBar>
 
+        {/* 内容部分 */}
         <Tabs
-          tabBarBackgroundColor="#000"
+          tabBarBackgroundColor="#171414"
           tabBarActiveTextColor="#EBB807"
           tabBarTextStyle={{ fontSize: "14px" }}
           tabBarUnderlineStyle={{ borderColor: "#EBB807" }}
@@ -34,13 +37,14 @@ class WithdrawRecord extends React.Component {
             console.log("onTabClick", index, tab);
           }}
         >
-          <RecordList status={1}></RecordList>
-          <RecordList status={0}></RecordList>
+          <EarningList type={0}></EarningList>
+          <EarningList type={2}></EarningList>
+          <EarningList type={3}></EarningList>
+          <EarningList type={4}></EarningList>
+          <EarningList type={5}></EarningList>
         </Tabs>
       </div>
     );
   }
 }
-
-const withdrawRecord = createForm()(WithdrawRecord);
-export default withdrawRecord;
+export default Earning;

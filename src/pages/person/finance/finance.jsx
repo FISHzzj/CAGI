@@ -1,27 +1,30 @@
 import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
-import RecordList  from "./recordList";
-import "./record.less";
-import { createForm } from "rc-form";
+import FinanceList from "./financeList";
+import "./finance.less";
 
-class WithdrawRecord extends React.Component {
+class Finance extends React.Component {
   navTab = [
-    { title: "已审核", sub: "1" },
-    { title: "待审核", sub: "2" }
+    { title: "全部", sub: 0 },
+    { title: "USDT", sub: 3 },
+    { title: "JYB", sub: 1 },
+    { title: "TBAU", sub: 4 },
+    { title: "PSBAU", sub: 2 }
   ];
 
   render() {
     return (
-      <div className="wrap_record">
+      <div className="wrap_finance">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          提币记录
+          资产明细
         </NavBar>
 
+        {/* 内容部分 */}
         <Tabs
-          tabBarBackgroundColor="#000"
+          tabBarBackgroundColor="#171414"
           tabBarActiveTextColor="#EBB807"
           tabBarTextStyle={{ fontSize: "14px" }}
           tabBarUnderlineStyle={{ borderColor: "#EBB807" }}
@@ -34,13 +37,14 @@ class WithdrawRecord extends React.Component {
             console.log("onTabClick", index, tab);
           }}
         >
-          <RecordList status={1}></RecordList>
-          <RecordList status={0}></RecordList>
+          <FinanceList type={0}></FinanceList>
+          <FinanceList type={1}></FinanceList>
+          <FinanceList type={2}></FinanceList>
+          <FinanceList type={3}></FinanceList>
+          <FinanceList type={4}></FinanceList>
         </Tabs>
       </div>
     );
   }
 }
-
-const withdrawRecord = createForm()(WithdrawRecord);
-export default withdrawRecord;
+export default  Finance ;

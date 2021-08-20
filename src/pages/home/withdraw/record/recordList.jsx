@@ -1,6 +1,6 @@
 import React from "react";
 import { PullToRefresh } from "antd-mobile";
-import Css from "./record.module.scss";
+import "./record.less";
 
 import { drawRecordList } from "@api/asset";
 
@@ -50,19 +50,19 @@ class RecordList extends React.Component {
   render() {
     return (
       <PullToRefresh
-        className={Css.list_wrap}
+        className="list_wrap"
         indicator={{ deactivate: "上拉可以刷新" }}
         direction="up"
         refreshing={this.state.refreshing}
         onRefresh={() => this.genData(this.page, this.pagesize)}
       >
         {this.state.data.map(i => (
-          <div key={i} className={Css.item}>
-            <div className={Css.item_left}>
+          <div key={i} className="item">
+            <div className="item_left">
               <div>{i.money} USDT</div>
               <div>{i.address}</div>
             </div>
-            <div className={Css.item_right}>
+            <div className="item_right">
               <div style={{ color: i.status == 1 ? '#36DB97' : '#FC7383' }}>{i.status == 1 ? '已审核' : '待审核'}</div>
               <div>{i.create_time.substr(0, 10)}</div>
               <div>{i.create_time.substr(11)}</div>
@@ -76,4 +76,4 @@ class RecordList extends React.Component {
     );
   }
 }
-export { RecordList };
+export default RecordList;

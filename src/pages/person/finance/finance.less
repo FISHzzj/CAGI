@@ -1,0 +1,38 @@
+// extracted by mini-css-extract-plugin
+// module.exports = {"wrap":"finance_wrap__1QKG9","add_message":"finance_add_message__2CD35","list_wrap":"finance_list_wrap__1kan0","item":"finance_item__3SBCC","item_title":"finance_item_title__1yUU1","item_line":"finance_item_line__2ogsF"};
+
+.wrap_finance{
+    .list_wrap{
+        height: 100%;
+        overflow: auto;
+        background-color: #130e12;
+        -webkit-overflow-scrolling: touch;
+        .item{
+            margin: 2.6667vw;
+            background-color: #171414;
+            border-radius: 1.0667vw;
+            padding: 2.6667vw;
+            .item_title{
+                line-height: 10.1333vw;
+                font-size: 3.7333vw;
+                border-bottom: 0.2667vw solid #333;
+                margin-bottom: 1.3333vw;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .item_line{
+                line-height: 6.9333vw;
+                font-size: 2.6667vw;
+                span:first-child{
+                    width: 26.6667vw;
+                    display: inline-block;
+                    color: #999;
+                }
+                span:last-child{
+                    color: #eee;
+                }
+            }
+        }
+    }
+}

@@ -5,6 +5,10 @@ import  Category  from './pages/category/index.jsx';
 import  Buy  from './pages/buy/index.jsx';
 import Shopcart from './pages/shopcart/index.jsx';
 import  Person  from './pages/person/index.jsx';
+import  Finance  from './pages/person/finance/finance.jsx';
+import  ExchangeWrapper  from './pages/person/exchange/exchange.jsx';
+import  Earning  from './pages/person/earning/earning.jsx';
+
 import Search from './pages/search/index.jsx';
 import Shop from './pages/shop/index.jsx';
 import  Ecosystem  from './pages/ecosystem/index.jsx';
@@ -21,6 +25,7 @@ import  recharge  from './pages/home/recharge/recharge.jsx';
 import  rechargeRecord  from './pages/home/recharge/rechargeRecord.jsx';
 import  uploadVoucher  from './pages/home/recharge/uploadVoucher.jsx';
 import  WithdrawWrapper  from './pages/home/withdraw/withdraw.jsx';
+import  withdrawRecord  from './pages/home/withdraw/record/record.jsx';
 
 
 
@@ -68,6 +73,11 @@ class App extends React.Component {
         'rechargeRecord',
         'uploadVoucher',
         'withdraw',
+        'withdrawRecord',
+        'finance',
+        'exchange',
+        'earning',
+
 
       ],
       selectedTab: this.props.match.params.selectedTab || "index",
@@ -132,6 +142,12 @@ class App extends React.Component {
             <Route path="/rechargeRecord" component={rechargeRecord}></Route>
             <Route path="/uploadVoucher" component={uploadVoucher}></Route>
             <Route path="/withdraw" component={WithdrawWrapper}></Route>
+            <Route path="/withdrawRecord" component={withdrawRecord}></Route>
+            <Route path="/finance" component={Finance}></Route>
+            <Route path="/exchange" component={ExchangeWrapper}></Route>
+            <Route path="/earning" component={Earning}></Route>
+
+            
             <Redirect to="/home"></Redirect>
           </Switch>
       

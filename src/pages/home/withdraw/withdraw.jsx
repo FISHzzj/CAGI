@@ -107,7 +107,7 @@ class Withdraw extends React.Component {
               key="1"
               className={`iconfont icon-history history`}
               onClick={() => {
-                this.props.history.push("/index/withdraw/record");
+                this.props.history.push("/withdrawRecord");
               }}
             ></i>
           ]}

@@ -1,3 +1,5 @@
+// module.exports = {"wrap":"ecosystem_wrap__1dxUw","separate":"ecosystem_separate__195L-","part":"ecosystem_part__2c5d1","title":"ecosystem_title__1NVvJ","content":"ecosystem_content__3Qg8-","content_item":"ecosystem_content_item__2pJOs","content_item_logo":"ecosystem_content_item_logo__PKx3p","content_item_tag":"ecosystem_content_item_tag__5pJYw","tip_wrap":"ecosystem_tip_wrap__-fPVj","tip_content":"ecosystem_tip_content__1YYwm","tip_img":"ecosystem_tip_img__1GiTS","tip_btn":"ecosystem_tip_btn__2EFKS"};
+
 .wrap{
     .park{
         background-color: #171414;
@@ -34,29 +36,49 @@
     .separate{
         height: 2.6667vw;
     }
-
     
-    .tip_wrap{
-        .tip_content{
-            width: 66.6667vw;
-            height: 514667vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            .tip_img{
-                width: 28.2667vw;
-                height: 27.4667vw;
-                margin-bottom: 3.4667vw;
-            }
-            .tip_btn{
-                width: 42.6667vw;
-                height: 8vw;
-                line-height: 8vw;
-                background-color: #ebb807;
-                font-size: 3.7333vw;
-            }
+}
+
+.tip_wrap{
+    .am-modal-content{
+        background-color: #121010;
+        border-radius: 1.8667vw;
+        padding-top: 4vw;
+        .am-modal-body{
+            padding: 0 4vw 4vw;
+            font-size: 4vw;
+            color: #888;
+            height: 100%;
+            line-height: 1.5;
+            overflow: auto;
         }
     }
+    .tip_content{
+        width: 66.6667vw;
+        height: 51.4667vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .tip_img{
+            width: 28.2667vw;
+            height: 27.4667vw;
+            margin-bottom: 3.4667vw;
+        }
+        .tip_btn{
+            width: 42.6667vw;
+            height: 8vw;
+            line-height: 8vw;
+            background-color: #ebb807;
+            font-size: 3.7333vw;
+        }
+    }
+}
+
+.am-modal{
+    position: relative;
+}
+.am-modal-transparent{
+    width: 72vw;
     
 }

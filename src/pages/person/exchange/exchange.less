@@ -1,0 +1,142 @@
+// extracted by mini-css-extract-plugin
+// module.exports = {"wrap":"exchange_wrap__oT41_","part":"exchange_part__2SXzy","exchange_panel_type":"exchange_exchange_panel_type__1y_Jw","exchange_panel_type_block":"exchange_exchange_panel_type_block__1lKvg","coin_name":"exchange_coin_name__3z5nu","coin_num":"exchange_coin_num__3KYoq","coin_arrow":"exchange_coin_arrow__3LTqm","exchange_panel_icon":"exchange_exchange_panel_icon__2nmMR","exchange_panel":"exchange_exchange_panel__DK_AO","exchange_rate":"exchange_exchange_rate__-S6_x","exchange_rate_span":"exchange_exchange_rate_span__1EcUD","exchange_form_label":"exchange_exchange_form_label__gjEhj","icon":"exchange_icon__3kCvc","exchange_form":"exchange_exchange_form__1tRQT","submit":"exchange_submit__3cLiO","list_wrap":"exchange_list_wrap__lmFn2","pull_wrap":"exchange_pull_wrap__2CY2n","item":"exchange_item__3UOJh","item_title":"exchange_item_title__IzIBT","item_line":"exchange_item_line__BcGdW"};
+
+
+.wrap_exchange {
+
+
+    .part {
+        background-color: #171414;
+        padding: 2.6667vw;
+        margin-bottom: 2.6667vw;
+    }
+  
+    .exchange_panel {
+      &_type {
+        display        : flex;
+        height: 21.3333vw;
+        justify-content: space-around;
+        align-items    : center;
+  
+        &_block {
+            width: 29.3333vw;
+            height: 12vw;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+  
+          .coin_name {
+            font-size: 3.7333vw;
+          }
+  
+          .coin_num {
+            color    : #999;
+            font-size: 2.6667vw;
+          }
+  
+          .coin_arrow {
+            position: absolute;
+            right   : 0;
+          }
+        }
+      }
+  
+      &_icon {
+        width: 5.3333vw;
+        height: 5.3333vw;
+      }
+  
+      .exchange_rate {
+        line-height: 10.6667vw;
+        padding: 0 5.3333vw;
+        font-size: 3.2vw;
+        margin-left: -2.6667vw;
+  
+        &_span {
+          color      : #999;
+          margin-left: 2.6667vw;
+        }
+      }
+    }
+  
+    .exchange_form {
+      &_label {
+        display    : flex;
+        align-items: center;
+  
+        .icon {
+            width: 4.2667vw;
+            height: 4.2667vw;
+            margin-right: 2.6667vw;
+            object-fit  : fill;
+        }
+      }
+  
+      .am-input-label-5 {
+        width: 100px !important;
+      }
+    }
+  
+    .submit {
+        margin: 9.8667vw;
+        border-radius: 1.0667vw;
+        overflow: hidden;
+        background-color: #ebb807;
+        border: none;
+        font-size: 3.7333vw;
+    }
+  
+    .am-list-item .am-input-control input {
+      text-align: right
+    }
+  }
+  
+  .list_wrap {
+    height  : 100%;
+    overflow: hidden;
+  
+    .pull_wrap {
+      height                    : calc(100% - 45px);
+      overflow                  : auto;
+      -webkit-overflow-scrolling: touch;
+  
+      .item {
+        margin          : 10px;
+        background-color: #171414;
+        border-radius   : 4px;
+        padding         : 10px;
+  
+        &_title {
+          line-height: 38px;
+          font-size  : 14px;
+  
+          :first-child {
+            width  : 100px;
+            display: inline-block;
+          }
+  
+          :last-child {
+            color: #36db97;
+          }
+        }
+  
+        &_line {
+          line-height: 26px;
+          font-size  : 10px;
+  
+          :first-child {
+            width  : 100px;
+            display: inline-block;
+            color  : #999;
+          }
+  
+          :last-child {
+            color: #eee;
+          }
+        }
+      }
+    }
+  }
+
