@@ -1,9 +1,16 @@
 import React from 'react';
+import {
+  Pagination, LocaleProvider, List, DatePicker, WhiteSpace, WingBlank, InputItem,
+  Picker, SearchBar,
+} from 'antd-mobile';
+import enUS from 'antd-mobile/lib/locale-provider/en_US';
+import ruRU from 'antd-mobile/lib/locale-provider/ru_RU';
+
 import Title from './components/title/index.jsx';
 import  Home  from './pages/home/index.jsx';
 import  Category  from './pages/category/index.jsx';
 import  Buy  from './pages/buy/index.jsx';
-import Shopcart from './pages/shopcart/index.jsx';
+import  Shopcart from './pages/shopcart/index.jsx';
 import  Person  from './pages/person/index.jsx';
 import  Finance  from './pages/person/finance/finance.jsx';
 import  ExchangeWrapper  from './pages/person/exchange/exchange.jsx';
@@ -47,6 +54,64 @@ function importAll (r) {
 
 importAll(require.context('./pages', true, /\.jsx$/));
 console.log(cache,'cache')
+
+
+const maxDate = new Date(2018, 11, 3, 22, 0);
+const minDate = new Date(2015, 7, 6, 8, 30);
+
+const seasons = [
+  [
+    {
+      label: '2013',
+      value: '2013',
+    },
+    {
+      label: '2014',
+      value: '2014',
+    },
+  ],
+  [
+    {
+      label: '春',
+      value: '春',
+    },
+    {
+      label: '夏',
+      value: '夏',
+    },
+  ],
+];
+
+const Page = () => (
+  <div>
+    <Pagination total={5} current={1} />
+    <WhiteSpace />
+    <List
+      className="date-picker-list"
+      style={{ backgroundColor: 'white' }}
+    >
+      <DatePicker
+        mode="date"
+        title="Select date"
+        minDate={minDate}
+        maxDate={maxDate}
+      >
+        <List.Item arrow="horizontal">datePicker</List.Item>
+      </DatePicker>
+      <Picker
+        data={seasons}
+        cascade={false}
+      >
+        <List.Item arrow="horizontal">picker</List.Item>
+      </Picker>
+    </List>
+    <WhiteSpace />
+    <SearchBar placeholder="Search" showCancelButton />
+    <WhiteSpace />
+    <InputItem type="money" placeholder="money input" />
+  </div>
+);
+
 //第二页，分类模块的文件使用react-loadable按需加载并且代码分割
 class App extends React.Component {
   constructor(props) {
@@ -89,279 +154,140 @@ class App extends React.Component {
         rank_name: "J0",
         member: "CAGI636729"
 
-      }
+      },
+      locale: 'English',
     };
+  }
+  onChange = (value) => {
+    this.setState({
+      locale: value[0],
+    });
   }
 
   render() {
+    const { locale } = this.state;
+    const languages = [
+      {
+        value: '中国',
+        label: '中国',
+        language: undefined,
+      },
+      {
+        value: 'English',
+        label: 'English',
+        language: enUS,
+      },
+      {
+        value: 'Русский',
+        label: 'Русский',
+        language: ruRU,
+      },
+    ];
+    const currentLocale = languages.find(item => item.value === locale).language;
+
+
     let showFooter = true;
     const { pathname } = this.props.location;
     const { showSearchArr } = this.state;
     if (!showSearchArr.find((item) => item === pathname)) {
       showFooter = false;
     }
+
+
     return (
-
-      <div className="app_container">
-         {/* 用户头像部分 */}
-         {showFooter ? (
-          <div
-            className="account"
-            onClick={() => {
-              this.props.history.push("/personal/intro");
-            }}
-          >
-            <MyImage src={this.state.userInfo.head_image} className="avatar"></MyImage>
-            <div className="account_info">
-              <div>
-                <span>{this.state.userInfo.nick_name}</span>
-                <span className="rank_span">{this.state.userInfo.rank_name}</span>
+      // <LocaleProvider locale={currentLocale}>
+        <div className="app_container">
+          
+          {/* 用户头像部分 */}
+          {showFooter ? (
+            <div
+              className="account"
+              onClick={() => {
+                this.props.history.push("/personal/intro");
+              }}
+            >
+              <MyImage src={this.state.userInfo.head_image} className="avatar"></MyImage>
+              <div className="account_info">
+                <div>
+                  <span>{this.state.userInfo.nick_name}</span>
+                  <span className="rank_span">{this.state.userInfo.rank_name}</span>
+                </div>
+                <div>{this.state.userInfo.member}</div>
               </div>
-              <div>{this.state.userInfo.member}</div>
+              {/* <div className={Css.account_arrow}>></div> */}
             </div>
-            {/* <div className={Css.account_arrow}>></div> */}
-          </div>
+            ) : null}
+
+            {/* <WingBlank>
+              <Picker
+                data={languages}
+                onChange={this.onChange}
+                cols={1}
+                value={[locale]}
+              >
+                <List.Item arrow="horizontal">Choose language</List.Item>
+              </Picker>
+    
+            </WingBlank> */}
+
+
+            <Switch>
+              <Route path="/home" component={Home}></Route>
+              <Route path="/ecosystem" component={Ecosystem}></Route>
+              <Route path="/news" component={News}></Route>
+              <Route path="/shopcart" component={Shopcart}></Route>
+              <Route path="/person" component={Person}></Route>
+              <Route path="/search" component={Search}></Route>
+              <Route path="/shop" component={Shop}></Route>
+              <Route path="/jyb-invest" component={JybInvest}></Route>
+              <Route path="/invest-record" component={investRecord}></Route>
+              <Route path="/ustd-invest" component={usdtInvest}></Route>
+              <Route path="/profit" component={profit}></Route>
+              <Route path="/transfer" component={transfer}></Route>
+              <Route path="/transferrecord" component={transferrecord}></Route>
+              <Route path="/recordDetail" component={recordDetail}></Route>
+              <Route path="/recordList" component={recordList}></Route>
+              <Route path="/recharge" component={recharge}></Route>
+              <Route path="/rechargeRecord" component={rechargeRecord}></Route>
+              <Route path="/uploadVoucher" component={uploadVoucher}></Route>
+              <Route path="/withdraw" component={WithdrawWrapper}></Route>
+              <Route path="/withdrawRecord" component={withdrawRecord}></Route>
+              <Route path="/finance" component={Finance}></Route>
+              <Route path="/exchange" component={ExchangeWrapper}></Route>
+              <Route path="/earning" component={Earning}></Route>
+
+              
+              <Redirect to="/home"></Redirect>
+            </Switch>
+        
+
+          {showFooter ? (
+            <footer className="footer">
+              <NavLink to="/home" activeClassName="active" className="link">
+                <i className="material-icons">favorite_border</i>
+                <span>首页</span>
+              </NavLink>
+              <NavLink to="/ecosystem" activeClassName="active" className="link">
+                <i className="material-icons">reorder</i>
+                <span>生态</span>
+              </NavLink>
+              <NavLink to="/news" activeClassName="active" className="link">
+                <i className="material-icons">card_giftcard</i>
+              <span>新闻</span>
+              </NavLink>
+              {/* <NavLink to="/shopcart" activeClassName="active" className="link">
+                <i className="material-icons">bookmark_border</i>
+              <span>购物车</span>
+              </NavLink> */}
+              <NavLink to="/person" activeClassName="active" className="link">
+                <i className="material-icons">account_box</i>
+                <span>我的</span>
+              </NavLink>
+            </footer>
           ) : null}
-          <Switch>
-            <Route path="/home" component={Home}></Route>
-            <Route path="/ecosystem" component={Ecosystem}></Route>
-            <Route path="/news" component={News}></Route>
-            <Route path="/shopcart" component={Shopcart}></Route>
-            <Route path="/person" component={Person}></Route>
-            <Route path="/search" component={Search}></Route>
-            <Route path="/shop" component={Shop}></Route>
-            <Route path="/jyb-invest" component={JybInvest}></Route>
-            <Route path="/invest-record" component={investRecord}></Route>
-            <Route path="/ustd-invest" component={usdtInvest}></Route>
-            <Route path="/profit" component={profit}></Route>
-            <Route path="/transfer" component={transfer}></Route>
-            <Route path="/transferrecord" component={transferrecord}></Route>
-            <Route path="/recordDetail" component={recordDetail}></Route>
-            <Route path="/recordList" component={recordList}></Route>
-            <Route path="/recharge" component={recharge}></Route>
-            <Route path="/rechargeRecord" component={rechargeRecord}></Route>
-            <Route path="/uploadVoucher" component={uploadVoucher}></Route>
-            <Route path="/withdraw" component={WithdrawWrapper}></Route>
-            <Route path="/withdrawRecord" component={withdrawRecord}></Route>
-            <Route path="/finance" component={Finance}></Route>
-            <Route path="/exchange" component={ExchangeWrapper}></Route>
-            <Route path="/earning" component={Earning}></Route>
-
             
-            <Redirect to="/home"></Redirect>
-          </Switch>
-      
-
-        {showFooter ? (
-           <footer className="footer">
-             <NavLink to="/home" activeClassName="active" className="link">
-               <i className="material-icons">favorite_border</i>
-               <span>首页</span>
-             </NavLink>
-             <NavLink to="/ecosystem" activeClassName="active" className="link">
-               <i className="material-icons">reorder</i>
-               <span>生态</span>
-             </NavLink>
-             <NavLink to="/news" activeClassName="active" className="link">
-               <i className="material-icons">card_giftcard</i>
-             <span>新闻</span>
-             </NavLink>
-            {/* <NavLink to="/shopcart" activeClassName="active" className="link">
-               <i className="material-icons">bookmark_border</i>
-             <span>购物车</span>
-            </NavLink> */}
-            <NavLink to="/person" activeClassName="active" className="link">
-              <i className="material-icons">account_box</i>
-              <span>我的</span>
-            </NavLink>
-          </footer>
-        ) : null}
-
-        {/* 选项卡页 */}
-        {/* <TabBar
-          barTintColor="#121010"
-          unselectedTintColor="#6F7070"
-          tintColor="#EBB807"
-          hidden={this.state.hidden}
-          prerenderingSiblingsNumber={0}
-
-        >
-          <TabBar.Item
-            title="首页"
-            key="Life"
-            icon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background: `url(${require("@static/icon/home_tab_index.png")}) center center /  21px 21px no-repeat`
-                }}
-              />
-            }
-            selectedIcon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background: `url(${require("@static/icon/home_tab_index_o.png")}) center center /  21px 21px no-repeat`
-                }}
-              />
-            }
-            selected={this.state.selectedTab === "index"}
-            onPress={() => {
-              this.setState({
-                selectedTab: "index"
-              });
-              this.props.history.replace("/index");
-            }}
-            data-seed="logId"
-          >
-            <Home></Home>
-          </TabBar.Item>
-          <TabBar.Item
-            title="生态"
-            key="Ecosystem"
-            icon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background: `url(${require("@static/icon/home_tab_ecosystem.png")}) center center /  21px 21px no-repeat`
-                }}
-              />
-            }
-            selectedIcon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background: `url(${require("@static/icon/home_tab_ecosystem_o.png")}) center center /  21px 21px no-repeat`
-                }}
-              />
-            }
-            selected={this.state.selectedTab === "ecosystem"}
-            onPress={() => {
-              this.setState({
-                selectedTab: "ecosystem"
-              });
-              this.props.history.replace("/ecosystem");
-            }}
-            data-seed="logId"
-          >
-            <Ecosystem></Ecosystem>
-          </TabBar.Item>
-          <TabBar.Item
-            title="新闻"
-            key="Life"
-            icon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background: `url(${require("@static/icon/home_tab_news.png")}) center center /  21px 21px no-repeat`
-                }}
-              />
-            }
-            selectedIcon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background: `url(${require("@static/icon/home_tab_news_o.png")}) center center /  21px 21px no-repeat`
-                }}
-              />
-            }
-            selected={this.state.selectedTab === "news"}
-            onPress={() => {
-              this.setState({
-                selectedTab: "news"
-              });
-              this.props.history.replace("/news");
-            }}
-            data-seed="logId"
-          >
-            <News></News>
-          </TabBar.Item>
-          <TabBar.Item
-            title="我的"
-            key="Life"
-            icon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background: `url(${require("@static/icon/home_tab_my.png")}) center center /  21px 21px no-repeat`
-                }}
-              />
-            }
-            selectedIcon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background: `url(${require("@static/icon/home_tab_my_o.png")}) center center /  21px 21px no-repeat`
-                }}
-              />
-            }
-            selected={this.state.selectedTab === "personal"}
-            onPress={() => {
-              this.setState({
-                selectedTab: "personal"
-              });
-              this.props.history.replace("/personal");
-            }}
-            data-seed="logId"
-          >
-            <Person></Person>
-          </TabBar.Item>
-        </TabBar>
-
-        {this.state.selectedTab === "index" && <MyImage onClick={() => this.props.history.push('/index/box')} src={require('@static/icon/home_redpack.png')} className="redpack"></MyImage>} */}
-
-
-      </div>
-
-      // <div className="wrap">
-      //   <header className="Title">
-      //     <Title></Title>
-      //   </header>
-      //   <div className="content">
-      //     <Switch>
-      //       <Route path="/home" component={Home}></Route>
-      //       <Route path="/ecosystem" component={Ecosystem}></Route>
-      //       <Route path="/news" component={News}></Route>
-      //       <Route path="/shopcart" component={Shopcart}></Route>
-      //       <Route path="/person" component={Person}></Route>
-      //       <Route path="/search" component={Search}></Route>
-      //       <Route path="/shop" component={Shop}></Route>
-      //       <Redirect to="/home"></Redirect>
-      //     </Switch>
-      //   </div>
-      //   {showFooter ? (
-      //     <footer className="footer">
-      //       <NavLink to="/home" activeClassName="active" className="link">
-      //         <i className="material-icons">favorite_border</i>
-      //         <span>首页</span>
-      //       </NavLink>
-      //       <NavLink to="/ecosystem" activeClassName="active" className="link">
-      //         <i className="material-icons">reorder</i>
-      //         <span>生态</span>
-      //       </NavLink>
-      //       <NavLink to="/buy" activeClassName="active" className="link">
-      //         <i className="material-icons">card_giftcard</i>
-      //         <span>新闻</span>
-      //       </NavLink>
-      //       {/* <NavLink to="/shopcart" activeClassName="active" className="link">
-      //         <i className="material-icons">bookmark_border</i>
-      //         <span>购物车</span>
-      //       </NavLink> */}
-      //       <NavLink to="/person" activeClassName="active" className="link">
-      //         <i className="material-icons">account_box</i>
-      //         <span>我的</span>
-      //       </NavLink>
-      //     </footer>
-      //   ) : null}
-      // </div>
+        </div>
+      // </LocaleProvider>
     );
   }
 }

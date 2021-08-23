@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Tabs, Badge, Carousel, NoticeBar, TabBar} from 'antd-mobile';
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import BScroll from 'better-scroll';
 import Slide from './slide';
 // import { connect } from 'react-redux';
@@ -97,6 +99,18 @@ class App extends React.Component {
     const { data } = this.props;
     // if (this.myScroll) {
     //   this.myScroll.refresh();
+    window.app = {
+      // output by server conditional
+      'zh-Hans-CN': {
+          'app.zh': '选择中文',
+          'app.en': '选择英文',
+      },
+      'en-US': {
+          'app.zh': 'choose chinese',
+          'app.en': 'choose english',
+      },
+    };
+    const defaultApp = window.app['en-US'];
     // }
     return (
       <div className="wrap" ref={this.wrap}>
@@ -159,6 +173,24 @@ class App extends React.Component {
               $ {(this.state.currencyList[2]?.rate / 100).toFixed(4)}
             </span>
           </div>
+        </div>
+
+        <div>
+          <p>
+            npm install react-intl@2.0.0
+          </p>
+          <p>
+            <a href="?locale=en-US" className="localeclass"><FormattedMessage
+              id="app.en"
+              defaultMessage={defaultApp['app.en']}
+            /></a>
+          </p>
+          <p>
+            <a href="?locale=zh-Hans-CN" className="localeclass"><FormattedMessage
+              id="app.zh"
+              defaultMessage={defaultApp['app.zh']}
+            /></a>
+          </p>
         </div>
 
         {/* 轮播图 */}
