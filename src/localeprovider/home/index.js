@@ -40,13 +40,6 @@ window.app = {
 
 
 
-
-
-
-
-
-
-
     },
     'en-US': {
         'app.zh': 'choose chinese',
