@@ -1,10 +1,10 @@
 import React from "react";
-import { MyImage } from "../../components/MyImage/MyImage";
+import { MyImage } from "@component/MyImage/MyImage";
 import { List, InputItem, Button } from "antd-mobile";
 import { createForm } from "rc-form";
-import "./index.module.scss";
+import "./index.less";
 
-// import { login } from "../../api/auth";
+import { login } from "../../api/auth";
 
 class Login extends React.Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class Login extends React.Component {
     const { getFieldProps } = this.props.form;
 
     return (
-      <div className="wrap">
+      <div className="login_wrap">
         <MyImage
           src={require("../../../static/img/logo.png")}
           className="logo"
@@ -90,4 +90,4 @@ class Login extends React.Component {
   }
 }
 const LoginWrapper = createForm()(Login);
-export { LoginWrapper as Login };
+export default  LoginWrapper;

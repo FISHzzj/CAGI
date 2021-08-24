@@ -1,0 +1,111 @@
+// extracted by mini-css-extract-plugin
+// module.exports = {"wrap":"forget_wrap__2NlZd","nav_bar":"forget_nav_bar__3iqG3","form_wrap":"forget_form_wrap__2znjg","icon":"forget_icon__3jwRN","submit":"forget_submit__1w6ZF","download":"forget_download__1k7Yq","gesture_wrap":"forget_gesture_wrap__3RpOm","animate_gestrue_wrap":"forget_animate_gestrue_wrap__10JvH","show_gesture_set":"forget_show_gesture_set__3LNyo","hide_gesture_set":"forget_hide_gesture_set__OID3l"};
+
+.forget_wrap {
+    height          : 100%;
+    overflow        : hidden;
+    background-image: url("http://cagi.315red.com.cn/h5/static/media/bg.a1909978.png");
+    background-size : 100% 100%;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+  
+  
+    .nav_bar {
+      position: absolute;
+      top     : 0;
+      left    : 0;
+      right   : 0;
+  
+      background-color: rgba(0, 0, 0, 0);
+      color           : #fff;
+      align-self      : stretch;
+    }
+  
+    .form_wrap {
+        padding: 0 10.6667vw 9.8667vw;
+  
+      .icon {
+        width: 4.2667vw;
+        height: 4.2667vw;
+      }
+  
+    //   :global {
+  
+        .am-list-body,
+        .am-list-item {
+          background-color: rgba(0, 0, 0, 0);
+        }
+  
+        .am-list-item.am-input-item {
+          height: auto;
+        }
+  
+        .am-list-item {
+          .am-input-label.am-input-label-5 {
+            width: auto;
+          }
+        }
+  
+        .am-input-control {
+            padding-left: 2.6667vw;
+            line-height: 10.6667vw;
+            border-bottom: 0.2667vw solid #444;
+  
+          input:disabled {
+            color: #fff;
+          }
+        }
+  
+        .am-input-extra {
+          max-height: inherit;
+        }
+    //   }
+    }
+  
+    .submit {
+        margin: 0 auto 5.3333vw;
+        width: 80vw;
+        background-color: #ebb807;
+        border-radius: 13.3333vw;
+        font-size: 4vw;
+    }
+  
+    .download {
+      text-align     : center;
+      text-decoration: underline;
+      color          : #999;
+    }
+  
+    .gesture_wrap {
+      width           : 100%;
+      height          : 100%;
+      background-color: #000;
+      position        : fixed;
+      top             : 0%;
+      left            : 0;
+      animation       : animate_gestrue_wrap 0.3s ease 0s 1 normal;
+    }
+  
+    @keyframes animate_gestrue_wrap {
+      0% {
+        top: 100%;
+      }
+  
+      100% {
+        top: 0;
+      }
+    }
+  
+    .show_gesture_set {
+      transition: all 1s;
+      top       : 0;
+    }
+  
+    .hide_gesture_set {
+      transition: all 0.3s;
+      top       : 100%;
+    }
+  }
+

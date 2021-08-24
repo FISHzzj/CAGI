@@ -6,6 +6,9 @@ import { HashRouter ,BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './mock'
 import './assets/index.less'
+import './localeprovider/home/index.js'
+// import './localeprovider/home/jybInvest/index.js'
+// import './localeprovider/home/investRecord/index.js'
 
 import qs from 'qs';
 import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
@@ -38,39 +41,35 @@ console.log(scripts)
 
   const ready = () => {
     // addLocaleData(window.ReactIntlLocaleData[localePrefix]);
-    window.app = {
-        // output by server conditional
-        'zh-Hans-CN': {
-            'app.zh': '选择中文',
-            'app.en': '选择英文',
-        },
-        'en-US': {
-            'app.zh': 'choose chinese',
-            'app.en': 'choose english',
-        },
-    };
+    // window.app = {
+    //   // output by server conditional
+    //   'zh-Hans-CN': {
+    //       'app.zh': '选择中文',
+    //       'app.en': '选择英文',
+    //       'Price': '价格',
+    //       'JYB': 'JYB创投',
+    //       'USDT': 'USDT创投',
+    //       'Mydividend': '我的分红',
+    //       'zhuanzhan': '转账',
+    //       'chongbi': '充币',
+    //       'tibi': '提币',
+    //       'gonggao': '系统内测公告'
+    //   },
+    //   'en-US': {
+    //       'app.zh': 'choose chinese',
+    //       'app.en': 'choose english',
+    //       'Price': 'Price',
+    //       'JYB': 'JYB Venture ',
+    //       'USDT': 'USDT venture',
+    //       'Mydividend': 'my dividend',
+    //       'zhuanzhan': 'transfer accounts',
+    //       'chongbi': 'Charge money',
+    //       'tibi': 'Withdraw money',
+    //       'gonggao': 'System internal test announcement'
+    //   },
+    // };
     const defaultApp = window.app['en-US'];
-    // const Test = React.createClass({
-    //     render() {
-    //       return (<div>
-    //         <p>
-    //           npm install react-intl@2.0.0
-    //         </p>
-    //         <p>
-    //           <a href="?locale=en-US"><FormattedMessage
-    //             id="app.en"
-    //             defaultMessage={defaultApp['app.en']}
-    //           /></a>
-    //         </p>
-    //         <p>
-    //           <a href="?locale=zh-Hans-CN"><FormattedMessage
-    //             id="app.zh"
-    //             defaultMessage={defaultApp['app.zh']}
-    //           /></a>
-    //         </p>
-    //       </div>);
-    //     },
-    //   });
+
       ReactDOM.render(
         <HashRouter>
             <IntlProvider

@@ -11,7 +11,7 @@ class App extends React.Component{
     constructor(props) {
         super(props);
         userInfo().then(resp => {
-          this.setState({ userInfo: resp.res });
+          this.setState({ userInfo: resp });
         });
         userAccount().then(resp => {
           this.setState({ accountInfo: resp.res });
@@ -128,7 +128,7 @@ class App extends React.Component{
                     <div
                       className="control_item"
                       onClick={() => {
-                        this.props.history.push("/index/transfer");
+                        this.props.history.push("/transfer");
                       }}
                     >
                       {/* <MyImage
@@ -143,7 +143,7 @@ class App extends React.Component{
       
                     <div className="control_item"
                       onClick={() => {
-                        this.props.history.push("/personal/pwd");
+                        this.props.history.push("/pwd");
                       }}>
                       <MyImage
                         src={require("@static/icon/my/xiugaimima.png")}
@@ -154,7 +154,7 @@ class App extends React.Component{
                     <div
                       className="control_item"
                       onClick={() => {
-                        this.props.history.push("/personal/message");
+                        this.props.history.push("/message");
                       }}
                     >
                       <MyImage
@@ -166,7 +166,7 @@ class App extends React.Component{
                     <div
                       className="control_item"
                       onClick={() => {
-                        this.props.history.push({ pathname: "/personal/myteam", search: `info=${this.state.userInfo.group_person_count},${this.state.userInfo.achievement_money},${this.state.userInfo.group_achievement_money}` });
+                        this.props.history.push({ pathname: "/myteam", search: `info=${this.state.userInfo.group_person_count},${this.state.userInfo.achievement_money},${this.state.userInfo.group_achievement_money}` });
                       }}
                     >
                       <MyImage
@@ -177,7 +177,7 @@ class App extends React.Component{
                     </div>
                     <div
                       className="control_item"
-                      onClick={() => { this.props.history.push("/personal/qr"); }}
+                      onClick={() => { this.props.history.push("/qr"); }}
                     >
                       <MyImage
                         src={require("@static/icon/my/tuiguangerweima.png")}

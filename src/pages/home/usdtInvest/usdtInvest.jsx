@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { NavBar, Icon, Button, Toast, Modal } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import  "./usdtInvest.less";
 
 import { investmentList, investmentConfirm } from "@api/home";
@@ -51,6 +53,7 @@ class usdtInvest extends React.Component {
   };
 
   render() {
+    const defaultApp = window.app['en-US'];
     return (
       <div className="wrap">
         <NavBar
@@ -66,13 +69,21 @@ class usdtInvest extends React.Component {
             ></i>
           ]}
         >
-          USDT创投
+          <FormattedMessage
+              id="USDTt"
+              defaultMessage={defaultApp['USDTt']}
+            />
         </NavBar>
 
         <div className="remain_wrap">
           <div className="remain_bg_top"></div>
           <div className="remain">
-            <span>USDT 账户余额</span>
+            <span>
+              <FormattedMessage
+                id="USDTyue"
+                defaultMessage={defaultApp['USDTyue']}
+              />
+            </span>
             <span>{this.state.accountInfo[2] || '-'}</span>
           </div>
         </div>
@@ -105,7 +116,10 @@ class usdtInvest extends React.Component {
         </div>
 
         <Button onClick={this.submit} className="submit">
-          购买
+          <FormattedMessage
+            id="goumai"
+            defaultMessage={defaultApp['goumai']}
+          />
         </Button>
       </div>
     );

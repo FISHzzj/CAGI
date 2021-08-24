@@ -1,6 +1,8 @@
 import React from "react";
 import { NavBar, Icon, PullToRefresh } from "antd-mobile";
 import { MyImage } from "@component/MyImage/MyImage";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./profit.less";
 
 import { awardRecordList } from '@api/home'
@@ -46,13 +48,17 @@ class Profit extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
     return (
       <div className="wrap">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          静态分红
+          <FormattedMessage
+            id="fenhong"
+            defaultMessage={defaultApp['fenhong']}
+          />
         </NavBar>
 
         <PullToRefresh
@@ -78,7 +84,12 @@ class Profit extends React.Component {
             </div>
           ))}
           {this.state.data.length === 0 && (
-            <div className="no_data">暂无数据</div>
+            <div className="no_data">
+               <FormattedMessage
+                id="nodata"
+                defaultMessage={defaultApp['nodata']}
+              />
+            </div>
           )}
         </PullToRefresh>
       </div>

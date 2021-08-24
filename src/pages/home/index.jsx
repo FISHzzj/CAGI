@@ -15,6 +15,7 @@ import LazyLoad, { forceCheck } from 'react-lazyload';
 import { FixedSizeList as List } from 'react-window';
 import { MyImage } from '@component/MyImage/MyImage';
 import { Content } from '@component/Content/Content'
+import  '../../localeprovider/home/index'
 import  "./index.less";
 
 
@@ -23,11 +24,11 @@ import { currencyList, notice, banner, ventureList } from "@api/home";
 
 
 
-const tabs = [
-  { title: <Badge text={'3'}>今日推荐</Badge> },
-  { title: <Badge text={'今日(20)'}>今日热卖</Badge> },
-  { title: <Badge z>折扣到底</Badge> }
-];
+// const tabs = [
+//   { title: <Badge text={'3'}>今日推荐</Badge> },
+//   { title: <Badge text={'今日(20)'}>今日热卖</Badge> },
+//   { title: <Badge z>折扣到底</Badge> }
+// ];
 
 
 class App extends React.Component {
@@ -99,18 +100,9 @@ class App extends React.Component {
     const { data } = this.props;
     // if (this.myScroll) {
     //   this.myScroll.refresh();
-    window.app = {
-      // output by server conditional
-      'zh-Hans-CN': {
-          'app.zh': '选择中文',
-          'app.en': '选择英文',
-      },
-      'en-US': {
-          'app.zh': 'choose chinese',
-          'app.en': 'choose english',
-      },
-    };
+
     const defaultApp = window.app['en-US'];
+    // const defaultApp = homeIndex['en-US'];
     // }
     return (
       <div className="wrap" ref={this.wrap}>
@@ -132,7 +124,10 @@ class App extends React.Component {
           </Carousel>
         </div>
         <div className="part part_four">
-          <div className="part_four_title">价格</div>
+          <div className="part_four_title"><FormattedMessage
+              id="Price"
+              defaultMessage={defaultApp['Price']}
+            /></div>
           {/* <div className={Css.part_four_item}>
             <MyImage
               src={require("@static/icon/home_usdt.png")}
@@ -174,7 +169,7 @@ class App extends React.Component {
             </span>
           </div>
         </div>
-
+{/* 
         <div>
           <p>
             npm install react-intl@2.0.0
@@ -191,7 +186,7 @@ class App extends React.Component {
               defaultMessage={defaultApp['app.zh']}
             /></a>
           </p>
-        </div>
+        </div> */}
 
         {/* 轮播图 */}
         {this.state.ventureList.length > 0 && <Carousel
@@ -223,7 +218,10 @@ class App extends React.Component {
               src={require("@static/icon/home_jyp_chuangtou.png")}
               className="part_one_item_img"
             ></MyImage>
-            <span className="part_one_item_title">JYB创投</span>
+            <span className="part_one_item_title"><FormattedMessage
+              id="JYB"
+              defaultMessage={defaultApp['JYB']}
+            /></span>
           </div>
           <div
             className="part_one_item"
@@ -235,7 +233,10 @@ class App extends React.Component {
               src={require("@static/icon/home_usdt_chuangtou.png")}
               className="part_one_item_img"
             ></MyImage>
-            <span className="part_one_item_title">USDT创投</span>
+            <span className="part_one_item_title"><FormattedMessage
+              id="USDT"
+              defaultMessage={defaultApp['USDT']}
+            /></span>
           </div>
           <div
             className="part_one_item"
@@ -247,7 +248,10 @@ class App extends React.Component {
               src={require("@static/icon/home_my_invest.png")}
               className="part_one_item_img"
             ></MyImage>
-            <span className="part_one_item_title">我的分红</span>
+            <span className="part_one_item_title"><FormattedMessage
+              id="Mydividend"
+              defaultMessage={defaultApp['Mydividend']}
+            /></span>
           </div>
           <div
             className="part_one_item"
@@ -259,7 +263,10 @@ class App extends React.Component {
               src={require("@static/icon/home_transfer.png")}
               className="part_one_item_img"
             ></MyImage>
-            <span className="part_one_item_title">转账</span>
+            <span className="part_one_item_title"><FormattedMessage
+              id="zhuanzhan"
+              defaultMessage={defaultApp['zhuanzhan']}
+            /></span>
           </div>
         </div>
 
@@ -272,7 +279,10 @@ class App extends React.Component {
               src={require("@static/icon/home_recharge.png")}
               className="part_two_item_img"
             ></MyImage>
-            <span>充币</span>
+            <span><FormattedMessage
+              id="chongbi"
+              defaultMessage={defaultApp['chongbi']}
+            /></span>
           </div>
           <div className="part_two_seperate"></div>
           <div
@@ -283,7 +293,10 @@ class App extends React.Component {
               src={require("@static/icon/home_withdraw.png")}
               className="part_two_item_img"
             ></MyImage>
-            <span>提币</span>
+            <span><FormattedMessage
+              id="tibi"
+              defaultMessage={defaultApp['tibi']}
+            /></span>
           </div>
         </div>
         

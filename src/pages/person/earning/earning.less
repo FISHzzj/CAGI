@@ -1,3 +1,57 @@
 // extracted by mini-css-extract-plugin
 // module.exports = {"wrap":"earning_wrap__3ZVVt","add_message":"earning_add_message__3-t-q","list_wrap":"earning_list_wrap__B4Let","item":"earning_item__3m7PZ","item_title":"earning_item_title__1F8yV","item_line":"earning_item_line__BbVOF"};
 
+.wrap_earning {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: none;
+  
+    .add_message {
+      padding: 5px;
+      font-weight: 700;
+    }
+  }
+  
+  .list_wrap {
+    height: 100%;
+    overflow: auto;
+    background-color: #130e12;
+    -webkit-overflow-scrolling: touch;
+  
+    .item {
+        margin: 2.6667vw;
+        background-color: #171414;
+        border-radius: 1.0667vw;
+        padding: 2.6667vw;
+  
+      &_title {
+        line-height: 10.1333vw;
+        font-size: 3.7333vw;
+        border-bottom: 0.2667vw solid #333;
+        margin-bottom: 1.3333vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        :last-child {
+          color: #36db97;
+        }
+      }
+  
+      &_line {
+        line-height: 6.9333vw;
+        font-size: 2.6667vw;
+  
+        :first-child {
+            width: 26.6667vw;
+            display: inline-block;
+            color: #999;
+        }
+        :last-child {
+          color: #eee;
+        }
+      }
+    }
+  }
+  

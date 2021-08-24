@@ -1,12 +1,8 @@
 import React from 'react';
-import {
-  Pagination, LocaleProvider, List, DatePicker, WhiteSpace, WingBlank, InputItem,
-  Picker, SearchBar,
-} from 'antd-mobile';
-import enUS from 'antd-mobile/lib/locale-provider/en_US';
-import ruRU from 'antd-mobile/lib/locale-provider/ru_RU';
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
 
-import Title from './components/title/index.jsx';
+
+// import Title from './components/title/index.jsx';
 import  Home  from './pages/home/index.jsx';
 import  Category  from './pages/category/index.jsx';
 import  Buy  from './pages/buy/index.jsx';
@@ -15,6 +11,14 @@ import  Person  from './pages/person/index.jsx';
 import  Finance  from './pages/person/finance/finance.jsx';
 import  ExchangeWrapper  from './pages/person/exchange/exchange.jsx';
 import  Earning  from './pages/person/earning/earning.jsx';
+import  Pwd  from './pages/person/pwd/pwd.jsx';
+import  Message  from './pages/person/message/message.jsx';
+import  MyTeam  from './pages/person/team/team.jsx';
+import  Qr  from './pages/person/qr/qr.jsx';
+import  Intro  from './pages/person/intro/intro.jsx';
+import  IntroFormWrapper  from './pages/person/intro/introForm.jsx';
+
+
 
 import Search from './pages/search/index.jsx';
 import Shop from './pages/shop/index.jsx';
@@ -33,6 +37,10 @@ import  rechargeRecord  from './pages/home/recharge/rechargeRecord.jsx';
 import  uploadVoucher  from './pages/home/recharge/uploadVoucher.jsx';
 import  WithdrawWrapper  from './pages/home/withdraw/withdraw.jsx';
 import  withdrawRecord  from './pages/home/withdraw/record/record.jsx';
+
+import  LoginWrapper  from './pages/login/index.jsx';
+import  RegisterWrapper  from './pages/login/register.jsx';
+import  ForgetWrapper  from './pages/login/forget.jsx';
 
 
 
@@ -142,6 +150,15 @@ class App extends React.Component {
         'finance',
         'exchange',
         'earning',
+        'pwd',
+        'message',
+        'myteam',
+        'qr',
+        'intro',
+        'introEdit',
+        'login',
+        'register',
+        'forget',
 
 
       ],
@@ -155,35 +172,42 @@ class App extends React.Component {
         member: "CAGI636729"
 
       },
-      locale: 'English',
+      locale: 'en',
     };
   }
-  onChange = (value) => {
-    this.setState({
-      locale: value[0],
-    });
-  }
+  // onChange = (value) => {
+  //   this.setState({
+  //     locale: value[0],
+  //   });
+  // }
 
   render() {
-    const { locale } = this.state;
-    const languages = [
-      {
-        value: '中国',
-        label: '中国',
-        language: undefined,
-      },
-      {
-        value: 'English',
-        label: 'English',
-        language: enUS,
-      },
-      {
-        value: 'Русский',
-        label: 'Русский',
-        language: ruRU,
-      },
-    ];
-    const currentLocale = languages.find(item => item.value === locale).language;
+    // const locale = qs.parse(location.search && location.search.slice(1)).locale || 'en-US';
+    // const localePrefix = locale.slice(0, locale.indexOf('-'));
+    // this.setState({
+      //     locale: value[0],
+      //   });
+    
+
+  //   const { locale } = this.state;
+  //   const languages = [
+  //     {
+  //       value: '中国',
+  //       label: '中国',
+  //       language: undefined,
+  //     },
+  //     {
+  //       value: 'English',
+  //       label: 'English',
+  //       language: enUS,
+  //     },
+  //     {
+  //       value: 'Русский',
+  //       label: 'Русский',
+  //       language: ruRU,
+  //     },
+  //   ];
+  //   const currentLocale = languages.find(item => item.value === locale).language;
 
 
     let showFooter = true;
@@ -192,7 +216,7 @@ class App extends React.Component {
     if (!showSearchArr.find((item) => item === pathname)) {
       showFooter = false;
     }
-
+    const defaultApp = window.app['en-US'];
 
     return (
       // <LocaleProvider locale={currentLocale}>
@@ -202,19 +226,34 @@ class App extends React.Component {
           {showFooter ? (
             <div
               className="account"
-              onClick={() => {
-                this.props.history.push("/personal/intro");
-              }}
+              
             >
               <MyImage src={this.state.userInfo.head_image} className="avatar"></MyImage>
-              <div className="account_info">
+              <div className="account_info" 
+                onClick={() => {
+                  this.props.history.push("/intro");
+                }}
+              >
                 <div>
                   <span>{this.state.userInfo.nick_name}</span>
                   <span className="rank_span">{this.state.userInfo.rank_name}</span>
                 </div>
                 <div>{this.state.userInfo.member}</div>
               </div>
-              {/* <div className={Css.account_arrow}>></div> */}
+              <div className="account_arrow">
+                {/* <p> */}
+                  <a href="?locale=en-US" className="localeclass"><FormattedMessage
+                    id="app.en"
+                    defaultMessage={defaultApp['app.en']}
+                  /></a>
+                {/* </p> */}
+                {/* <p> */}
+                  <a href="?locale=zh-Hans-CN" className="localeclass"><FormattedMessage
+                    id="app.zh"
+                    defaultMessage={defaultApp['app.zh']}
+                  /></a>
+                {/* </p> */}
+              </div>
             </div>
             ) : null}
 
@@ -255,6 +294,15 @@ class App extends React.Component {
               <Route path="/finance" component={Finance}></Route>
               <Route path="/exchange" component={ExchangeWrapper}></Route>
               <Route path="/earning" component={Earning}></Route>
+              <Route path="/pwd" component={Pwd}></Route>
+              <Route path="/message" component={Message}></Route>
+              <Route path="/myteam" component={MyTeam}></Route>
+              <Route path="/qr" component={Qr}></Route>
+              <Route path="/intro" component={Intro}></Route>
+              <Route path="/introEdit" component={IntroFormWrapper}></Route>
+              <Route path="/login" component={LoginWrapper}></Route>
+              <Route path="/register" component={RegisterWrapper}></Route>
+              <Route path="/forget" component={ForgetWrapper}></Route>
 
               
               <Redirect to="/home"></Redirect>

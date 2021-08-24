@@ -9,6 +9,8 @@ import {
   Toast
 } from "antd-mobile";
 import { createForm } from "rc-form";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./transfer.less";
 
 import { configTransferList, userAccount, transferCommit } from "@api/asset";
@@ -121,6 +123,7 @@ class Transfer extends React.Component {
 
   render() {
     const { getFieldProps } = this.props.form;
+    const defaultApp = window.app['en-US'];
 
     return (
       <div className="wrap">
@@ -138,7 +141,10 @@ class Transfer extends React.Component {
             ></i>
           ]}
         >
-          转账管理
+          <FormattedMessage
+            id="zhuanzhangguagnli"
+            defaultMessage={defaultApp['zhuanzhangguagnli']}
+          />
         </NavBar>
 
         <List className="form_wrap">
@@ -147,16 +153,27 @@ class Transfer extends React.Component {
             clear
             placeholder="请输入会员编号"
           >
-            会员编号
+             <FormattedMessage
+              id="huiyuan"
+              defaultMessage={defaultApp['huiyuan']}
+            />
           </InputItem>
           <List.Item
             extra={this.state.selectedCurrency}
             arrow="horizontal"
             onClick={this.showActionSheet}
           >
-            货币类型
+            <FormattedMessage
+              id="huiyuan"
+              defaultMessage={defaultApp['huiyuan']}
+            />
           </List.Item>
-          <List.Item extra={this.state.accountRemain}>账户余额</List.Item>
+          <List.Item extra={this.state.accountRemain}>
+            <FormattedMessage
+              id="zhanghuyue"
+              defaultMessage={defaultApp['zhanghuyue']}
+            />
+          </List.Item>
           <InputItem
             value={this.state.money}
             clear
@@ -165,22 +182,41 @@ class Transfer extends React.Component {
             onBlur={() => this.setState({ moneyTip: "请输入转账金额" })}
             type="money"
           >
-            转账金额
+            <FormattedMessage
+              id="zhuanzhanjine"
+              defaultMessage={defaultApp['zhuanzhanjine']}
+            />
           </InputItem>
-          <List.Item extra={this.state.realMoney}>实际金额</List.Item>
-          <List.Item extra={this.state.feeMoney}>手续费</List.Item>
+          <List.Item extra={this.state.realMoney}>
+            <FormattedMessage
+              id="shijijine"
+              defaultMessage={defaultApp['shijijine']}
+            />
+          </List.Item>
+          <List.Item extra={this.state.feeMoney}>
+            <FormattedMessage
+              id="shouxufei"
+              defaultMessage={defaultApp['shouxufei']}
+            />
+          </List.Item>
           <InputItem
             {...getFieldProps("pay_password")}
             placeholder="请输入二级密码"
             type="password"
             clear
           >
-            输入二级密码
+             <FormattedMessage
+              id="shuruerjimima"
+              defaultMessage={defaultApp['shuruerjimima']}
+            />
           </InputItem>
         </List>
 
         <Button onClick={this.submit} className="submit">
-          提交
+          <FormattedMessage
+              id="tijiao"
+              defaultMessage={defaultApp['tijiao']}
+            />
         </Button>
       </div>
     );

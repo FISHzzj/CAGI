@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { NavBar, Icon, Button, Toast, Modal } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./jybInvest.less";
 
 import { investmentList, investmentConfirm } from "@api/home";
@@ -51,6 +53,7 @@ class JybInvest extends React.Component {
   };
 
   render() {
+    const defaultApp = window.app['en-US'];
     return (
       <div className="wrap">
         <NavBar
@@ -66,13 +69,21 @@ class JybInvest extends React.Component {
             ></i>
           ]}
         >
-          JYB创投
+          <FormattedMessage
+              id="JYBt"
+              defaultMessage={defaultApp['JYBt']}
+            />
         </NavBar>
 
         <div className="remain_wrap">
           <div className="remain_bg_top"></div>
           <div className="remain">
-            <span>JYB 账户余额</span>
+            <span>
+              <FormattedMessage
+                id="JYByue"
+                defaultMessage={defaultApp['JYByue']}
+              />
+            </span>
             <span>{this.state.accountInfo[2] || '-'}</span>
           </div>
         </div>
@@ -106,7 +117,10 @@ class JybInvest extends React.Component {
         </div>
 
         <Button onClick={this.submit} className="submit">
-          购买
+          <FormattedMessage
+            id="goumai"
+            defaultMessage={defaultApp['goumai']}
+          />
         </Button>
       </div>
     );

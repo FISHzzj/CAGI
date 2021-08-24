@@ -1,0 +1,96 @@
+// extracted by mini-css-extract-plugin
+// module.exports = {"team_wrap":"team_team_wrap__1a4Oo","statistic":"team_statistic__3sjgA","statistic_item":"team_statistic_item__15duz","statistic_item_num":"team_statistic_item_num__31NsH","content":"team_content__ULtIO","team_item":"team_team_item__1TgX7","dot":"team_dot__rSiy3","team_item_performance":"team_team_item_performance__2YaiJ","team_item_sub":"team_team_item_sub__1ksI9"};
+
+.team_wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    .statistic {
+        height: 21.3333vw;
+        padding-top: 5.3333vw;
+      background-color: #ebb807;
+      color: #000;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+  
+      &_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+  
+        &_num {
+            height: 8vw;
+            line-height: 8vw;
+            font-weight: 700;
+        }
+      }
+    }
+  
+    .content {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1;
+  
+      :global(.am-accordion-header) {
+        background-color: #000;
+        color: #fff;
+        height: auto;
+  
+        &::after {
+          left: 30px !important;
+          right: 30px !important;
+          width: initial !important;
+        }
+      }
+  
+      :global(.am-accordion-content-box::after) {
+        height: 0 !important;
+      }
+  
+      .team_item {
+        display: flex;
+        align-items: center;
+        height: 45px;
+        position: relative;
+        font-size: 12px;
+  
+        .dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: #e5bb00;
+          overflow: hidden;
+          margin-right: 10px;
+        }
+  
+        &_performance {
+          position: absolute;
+          right: 0;
+          color: #ebb807;
+          padding-right: 10px;
+        }
+      }
+  
+      .team_item_sub {
+        padding: 0 30px;
+        background-color: #000;
+        color: #fff;
+  
+        .team_item {
+          height: 40px;
+  
+          &_performance {
+            color: #fff;
+          }
+        }
+  
+        .dot {
+          background-color: #5cdd98;
+        }
+      }
+    }
+  }
+  

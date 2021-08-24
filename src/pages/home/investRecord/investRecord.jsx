@@ -1,5 +1,7 @@
 import React from "react";
 import { NavBar, Icon, PullToRefresh } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./investRecord.less";
 
 import { investmentRecord } from "@api/home";
@@ -44,13 +46,18 @@ class InvestRecord extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="wrap">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          创投记录
+          <FormattedMessage
+            id="ctjilv"
+            defaultMessage={defaultApp['ctjilv']}
+          />
         </NavBar>
 
         <PullToRefresh
@@ -68,11 +75,21 @@ class InvestRecord extends React.Component {
                 </div>
                 <div>{i.create_time}</div>
               </div>
-              <div className="item_right">创投成功</div>
+              <div className="item_right">
+                <FormattedMessage
+                  id="ctsuccess"
+                  defaultMessage={defaultApp['ctsuccess']}
+                />
+              </div>
             </div>
           ))}
           {this.state.data.length === 0 && (
-            <div className="no_data">暂无数据</div>
+            <div className="no_data">
+              <FormattedMessage
+                id="nodata"
+                defaultMessage={defaultApp['nodata']}
+              />
+            </div>
           )}
         </PullToRefresh>
       </div>

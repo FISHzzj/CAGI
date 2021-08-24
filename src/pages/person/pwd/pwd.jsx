@@ -1,30 +1,28 @@
 import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
-import  EarningList  from "./earningList";
-import "./earning.less";
+import  PwdForm  from "./pwdForm";
+import  PayPwdForm  from "./payPwdForm";
+import "./pwd.less";
 
-class Earning extends React.Component {
+class Pwd extends React.Component {
   navTab = [
-    { title: "全部", sub: 0 },
-    { title: "销售奖", sub: 2 },
-    { title: "团队奖", sub: 3 },
-    { title: "管理奖", sub: 4 },
-    { title: "辅导奖", sub: 5 }
+    { title: "登录密码", sub: "1" },
+    { title: "二级密码", sub: "2" }
   ];
 
   render() {
     return (
-      <div className="wrap_earning">
+      <div className="wrap_pwd">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          团队收益
+          修改密码
         </NavBar>
 
         {/* 内容部分 */}
         <Tabs
-          tabBarBackgroundColor="#171414"
+          tabBarBackgroundColor="#000"
           tabBarActiveTextColor="#EBB807"
           tabBarTextStyle={{ fontSize: "14px" }}
           tabBarUnderlineStyle={{ borderColor: "#EBB807" }}
@@ -37,14 +35,11 @@ class Earning extends React.Component {
             console.log("onTabClick", index, tab);
           }}
         >
-          <EarningList type={0}></EarningList>
-          <EarningList type={2}></EarningList>
-          <EarningList type={3}></EarningList>
-          <EarningList type={4}></EarningList>
-          <EarningList type={5}></EarningList>
+          <PwdForm></PwdForm>
+          <PayPwdForm></PayPwdForm>
         </Tabs>
       </div>
     );
   }
 }
-export default Earning;
+export default Pwd;
