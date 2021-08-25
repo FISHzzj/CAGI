@@ -10,6 +10,8 @@ import {
 } from "antd-mobile";
 import { createForm } from "rc-form";
 import { uploadImage } from "@src/utility/imageUpload";
+import { addLocaleData, IntlProvider, FormattedMessage, injectIntl} from 'react-intl';
+
 import "./withdraw.less";
 
 import { configDrawList, drawCommit, userAccount } from "@api/asset";
@@ -97,6 +99,9 @@ class Withdraw extends React.Component {
   render() {
     const { getFieldProps } = this.props.form;
     const { files } = this.state;
+    // console.log(this.props)
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="wrap_withdraw">
         <NavBar
@@ -112,7 +117,10 @@ class Withdraw extends React.Component {
             ></i>
           ]}
         >
-          提币
+          <FormattedMessage
+              id="tibi"
+              defaultMessage={defaultApp['tibi']}
+            />
         </NavBar>
 
         <List className={`part`}>
@@ -121,7 +129,10 @@ class Withdraw extends React.Component {
             clear
             placeholder="请输入或粘贴地址"
           >
-            钱包地址
+            <FormattedMessage
+              id="qianbaodizhi"
+              defaultMessage={defaultApp['qianbaodizhi']}
+            />
           </InputItem>
           <InputItem
             clear
@@ -131,17 +142,26 @@ class Withdraw extends React.Component {
             type="money"
             moneyKeyboardAlign="left"
           >
-            数量
+            <FormattedMessage
+              id="keyongyue"
+              defaultMessage={defaultApp['keyongyue']}
+            />
           </InputItem>
           <InputItem
             value={this.state.realMoney}
             onChange={this.realMoneyOnChange}
             disabled={true}
           >
-            到账数量
+            <FormattedMessage
+              id="daozhangshuliang"
+              defaultMessage={defaultApp['daozhangshuliang']}
+            />
           </InputItem>
           <InputItem value={this.state.feeMoney} disabled={true}>
-            手续费
+            <FormattedMessage
+              id="shouxufei"
+              defaultMessage={defaultApp['shouxufei']}
+            />
           </InputItem>
           <InputItem
             {...getFieldProps("pay_password")}
@@ -149,10 +169,18 @@ class Withdraw extends React.Component {
             placeholder="请输入二级密码"
             type="password"
           >
-            输入二级密码
+            <FormattedMessage
+              id="shuruerjimima"
+              defaultMessage={defaultApp['shuruerjimima']}
+            />
           </InputItem>
         </List>
-        <div className="qr_title">上传钱包二维码</div>
+        <div className="qr_title">
+          <FormattedMessage
+              id="shangchuanerweima"
+              defaultMessage={defaultApp['shangchuanerweima']}
+            />
+        </div>
         <div className={`qr_content`}>
           <ImagePicker
             files={files}
@@ -165,7 +193,10 @@ class Withdraw extends React.Component {
         </div>
 
         <Button onClick={this.submit} className="submit">
-          提交
+          <FormattedMessage
+              id="tijiao"
+              defaultMessage={defaultApp['tijiao']}
+            />
         </Button>
       </div>
     );

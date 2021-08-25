@@ -18,11 +18,6 @@ import { configTransferList, userAccount, transferCommit } from "@api/asset";
 class Transfer extends React.Component {
   constructor(props) {
     super(props);
-    const {
-      intl, // 通过react-intl的高阶函数injectIntl包裹当前组件获取 - 字符串国际化
-      intlId,// 国际化对应的id
-    } = props;
-
     configTransferList().then(resp => {
       this.setState({
         currencyOptions: resp.map(i => i.name)
@@ -156,7 +151,7 @@ class Transfer extends React.Component {
           <InputItem
             {...getFieldProps("target_member")}
             clear
-            placeholder={intl.formatMessage({ id: intlId })}
+            placeholder="请输入会员编号"
           >
              <FormattedMessage
               id="huiyuan"
@@ -229,4 +224,4 @@ class Transfer extends React.Component {
 }
 const TransferWrapper = createForm()(Transfer);
 
-export default injectIntl(TransferWrapper) ;
+export default TransferWrapper;

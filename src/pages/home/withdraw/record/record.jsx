@@ -1,6 +1,8 @@
 import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
 import RecordList  from "./recordList";
+import { addLocaleData, IntlProvider, FormattedMessage, injectIntl} from 'react-intl';
+
 import "./record.less";
 import { createForm } from "rc-form";
 
@@ -11,13 +13,18 @@ class WithdrawRecord extends React.Component {
   ];
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="wrap_record">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          提币记录
+           <FormattedMessage
+              id="tibijilv"
+              defaultMessage={defaultApp['tibijilv']}
+            />
         </NavBar>
 
         <Tabs

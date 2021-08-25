@@ -3,6 +3,8 @@ import { NavBar, Icon, Button, Toast } from "antd-mobile";
 import { MyImage } from "@component/MyImage/MyImage";
 import QRCode from "qrcode.react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { addLocaleData, IntlProvider, FormattedMessage, injectIntl} from 'react-intl';
+
 import "./recharge.less";
 
 import { configRemittanceList } from "@api/asset";
@@ -22,6 +24,8 @@ class Recharge extends React.Component {
     address: "-"
   };
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="recharge_wrap">
         <NavBar
@@ -38,7 +42,10 @@ class Recharge extends React.Component {
             ></i>
           ]}
         >
-          USDT充币
+          <FormattedMessage
+              id="USDTchongbi"
+              defaultMessage={defaultApp['USDTchongbi']}
+            />
         </NavBar>
 
         <MyImage
@@ -51,14 +58,24 @@ class Recharge extends React.Component {
         <div className="seperate"></div>
 
         <div className="address_wrap">
-          <div>钱包地址</div>
+          <div>
+            <FormattedMessage
+              id="qianbaodizhi"
+              defaultMessage={defaultApp['qianbaodizhi']}
+            />
+          </div>
           <div className="address">{this.state.address}</div>
 
           <CopyToClipboard
             text={this.state.address}
             onCopy={() => Toast.info("复制成功", 2, null, false)}
           >
-            <div>复制</div>
+            <div>
+              <FormattedMessage
+                id="fuzhi"
+                defaultMessage={defaultApp['fuzhi']}
+              />
+            </div>
           </CopyToClipboard>
         </div>
 
@@ -68,7 +85,10 @@ class Recharge extends React.Component {
           }}
           className="upload_btn"
         >
-          上传凭证
+            <FormattedMessage
+              id="shangchuanpinzheng"
+              defaultMessage={defaultApp['shangchuanpinzheng']}
+            />
         </Button>
       </div>
     );

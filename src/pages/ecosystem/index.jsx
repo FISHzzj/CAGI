@@ -1,6 +1,8 @@
 import React from 'react'
 import { Modal, Button } from 'antd-mobile';
 import { MyImage } from "@component/MyImage/MyImage";
+import { addLocaleData, IntlProvider, FormattedMessage, injectIntl} from 'react-intl';
+
 import './index.less'
 import Bscroll from 'better-scroll'
 class App extends React.Component {
@@ -16,68 +18,115 @@ class App extends React.Component {
         // new Bscroll(this.buy.current)
     }
     render() {
+        const defaultApp = window.app['en-US'];
+
         return (
             <div className="wrap">
                 <div className="part" onClick={() => {
                     this.setState({ showTip: true })
                 }}>
-                <div className="title">便民服务</div>
+                <div className="title">
+                <FormattedMessage
+                    id="bianminfuwu"
+                    defaultMessage={defaultApp['bianminfuwu']}
+                    />
+                </div>
                 <div className="content">
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/jiaofeifuwu.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">缴费服务</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="jiaofeifuwu"
+                            defaultMessage={defaultApp['jiaofeifuwu']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/jiaoyupeixun.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">教育培训</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="jiaoyupeixun"
+                            defaultMessage={defaultApp['jiaoyupeixun']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/shequtoupiao.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">社区投票</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="shequtoupiao"
+                            defaultMessage={defaultApp['shequtoupiao']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/shequzhibo.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">社区直播</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="shequzhibo"
+                            defaultMessage={defaultApp['shequzhibo']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/guojisaishi.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">国际赛事</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="guojisaishi"
+                            defaultMessage={defaultApp['guojisaishi']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/haiwaishangcheng.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">海外商城</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="haiwaishangcheng"
+                            defaultMessage={defaultApp['haiwaishangcheng']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/youxiyule.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">游戏娱乐</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="youxiyule"
+                            defaultMessage={defaultApp['youxiyule']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
-                    <MyImage
-                        src={require("@static/icon/eco/wenhualvyou.png")}
-                        className="content_item_logo"
-                    ></MyImage>
-                    <div className="content_item_tag">文化旅游</div>
+                        <MyImage
+                            src={require("@static/icon/eco/wenhualvyou.png")}
+                            className="content_item_logo"
+                        ></MyImage>
+                        <div className="content_item_tag">
+                            <FormattedMessage
+                                id="wenhualvyou"
+                                defaultMessage={defaultApp['wenhualvyou']}
+                            />
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -87,35 +136,60 @@ class App extends React.Component {
                 <div className="part" onClick={() => {
                     this.setState({ showTip: true })
                 }}>
-                <div className="title">财富管理</div>
+                <div className="title">
+                    <FormattedMessage
+                        id="caifuguangli"
+                        defaultMessage={defaultApp['caifuguangli']}
+                    />
+                </div>
                 <div className="content">
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/shangjiazhifu.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">商家支付</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="shangjiazhifu"
+                            defaultMessage={defaultApp['shangjiazhifu']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/guojibaoxian.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">国际保险</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="guojibaoxian"
+                            defaultMessage={defaultApp['guojibaoxian']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/guojitouzi.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">国际投资</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="guojitouzi"
+                            defaultMessage={defaultApp['guojitouzi']}
+                        />
+                    </div>
                     </div>
                     <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/aixinjuanzhu.png")}
                         className="content_item_logo"
                     ></MyImage>
-                    <div className="content_item_tag">爱心捐助</div>
+                    <div className="content_item_tag">
+                        <FormattedMessage
+                            id="aixinjuanzu"
+                            defaultMessage={defaultApp['aixinjuanzu']}
+                        />
+                    </div>
                     </div>
                 </div>
                 </div>
@@ -128,7 +202,12 @@ class App extends React.Component {
                     >
                     <div className="tip_content">
                         <MyImage className="tip_img" src={require('@static/img/developing.png')}></MyImage>
-                        <Button className="tip_btn" onClick={() => { this.setState({ showTip: false }) }}>好的</Button>
+                        <Button className="tip_btn" onClick={() => { this.setState({ showTip: false }) }}>
+                            <FormattedMessage
+                                id="haode"
+                                defaultMessage={defaultApp['haode']}
+                            />
+                        </Button>
                     </div>
                 </Modal>
             </div >

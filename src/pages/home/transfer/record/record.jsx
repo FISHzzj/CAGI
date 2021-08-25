@@ -1,6 +1,8 @@
 import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
 import { RecordList } from "./recordList";
+import { addLocaleData, IntlProvider, FormattedMessage, injectIntl} from 'react-intl';
+
 
 import "./record.less";
 
@@ -11,13 +13,18 @@ class TransferRecord extends React.Component {
   ];
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="wrap">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          转账记录
+           <FormattedMessage
+              id="zhuanzhangjilv"
+              defaultMessage={defaultApp['zhuanzhangjilv']}
+            />
         </NavBar>
 
         <Tabs

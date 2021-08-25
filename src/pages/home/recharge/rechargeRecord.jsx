@@ -1,5 +1,7 @@
 import React from "react";
 import { NavBar, Icon, PullToRefresh } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage, injectIntl} from 'react-intl';
+
 import "./recharge.less";
 
 import { remittanceRecordList } from "@api/asset";
@@ -45,13 +47,18 @@ class RechargeRecord extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="record_wrap">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          充币记录
+          <FormattedMessage
+              id="chongzhijilv"
+              defaultMessage={defaultApp['chongzhijilv']}
+            />
         </NavBar>
 
         <PullToRefresh
@@ -71,7 +78,12 @@ class RechargeRecord extends React.Component {
             </div>
           ))}
           {this.state.data.length === 0 && (
-            <div className="no_data">暂无数据</div>
+            <div className="no_data">
+              <FormattedMessage
+                id="zanwushuju"
+                defaultMessage={defaultApp['zanwushuju']}
+              />
+            </div>
           )}
         </PullToRefresh>
       </div>
