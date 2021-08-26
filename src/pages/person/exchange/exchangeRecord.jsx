@@ -1,5 +1,7 @@
 import React from "react";
 import { NavBar, Icon, PullToRefresh } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./exchange.less";
 
 import { convertRecordList } from '@api/asset'
@@ -47,42 +49,78 @@ class ExchangeRecord extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
-      <div className={Css.list_wrap}>
+      <div className="list_wrap">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          兑换记录
+           <FormattedMessage
+            id="duihuanjilv"
+            defaultMessage={defaultApp['duihuanjilv']}
+          />
         </NavBar>
 
         <PullToRefresh
-          className={Css.pull_wrap}
+          className="pull_wrap"
           indicator={{ deactivate: "上拉可以刷新" }}
           direction="up"
           refreshing={this.state.refreshing}
           onRefresh={() => this.genData(this.page, this.pagesize)}
         >
           {this.state.data.map(i => (
-            <div key={i.id} className={Css.item}>
-              <div className={Css.item_title}>
-                <span>转换数量</span>
+            <div key={i.id} className="item">
+              <div className="item_title">
+                <span>
+                  <FormattedMessage
+                    id="zhuanhuanshuliang"
+                    defaultMessage={defaultApp['zhuanhuanshuliang']}
+                  />
+                </span>
                 <span>{i.money}</span>
               </div>
-              <div className={Css.item_line}>
-                <span>转出账户</span>
-                <span>{i.currency_name} 账户</span>
+              <div className="item_line">
+                <span>
+                  <FormattedMessage
+                    id="zhuanchuzhanghu"
+                    defaultMessage={defaultApp['zhuanchuzhanghu']}
+                  />
+                </span>
+                <span>{i.currency_name} <FormattedMessage
+                    id="zhanghu"
+                    defaultMessage={defaultApp['zhanghu']}
+                  /></span>
               </div>
-              <div className={Css.item_line}>
-                <span>转入账户</span>
-                <span>{i.target_currency_name} 账户</span>
+              <div className="item_line">
+                <span>
+                  <FormattedMessage
+                    id="zhuanruzhanghu"
+                    defaultMessage={defaultApp['zhuanruzhanghu']}
+                  />
+                </span>
+                <span>{i.target_currency_name} <FormattedMessage
+                    id="zhanghu"
+                    defaultMessage={defaultApp['zhanghu']}
+                  /></span>
               </div>
-              <div className={Css.item_line}>
-                <span>转换比例</span>
+              <div className="item_line">
+                <span>
+                  <FormattedMessage
+                    id="zhuanhuanbili"
+                    defaultMessage={defaultApp['zhuanhuanbili']}
+                  />
+                </span>
                 <span>1 ：{(1 / i.rate).toFixed(2)}</span>
               </div>
-              <div className={Css.item_line}>
-                <span>交易日期</span>
+              <div className="item_line">
+                <span>
+                  <FormattedMessage
+                    id="jiaoyiriqi"
+                    defaultMessage={defaultApp['jiaoyiriqi']}
+                  />
+                </span>
                 <span>{i.create_time}</span>
               </div>
             </div>
@@ -92,4 +130,4 @@ class ExchangeRecord extends React.Component {
     );
   }
 }
-export { ExchangeRecord };
+export default  ExchangeRecord ;

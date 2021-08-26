@@ -1,5 +1,7 @@
 import React from "react";
 import { PullToRefresh } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./messageList.less";
 
 import { userSend, userReceive } from '@api/home'
@@ -47,6 +49,8 @@ class MessageList extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <PullToRefresh
         className="wrap_messageList"
@@ -68,7 +72,12 @@ class MessageList extends React.Component {
           </div>
         ))}
         {this.state.data.length === 0 && (
-          <div className="no_data">暂无数据</div>
+          <div className="no_data">
+            <FormattedMessage
+                id="zangwushuju"
+                defaultMessage={defaultApp['zangwushuju']}
+            />
+            </div>
         )}
       </PullToRefresh>
     );

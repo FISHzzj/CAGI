@@ -1,6 +1,8 @@
 import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
 import  EarningList  from "./earningList";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./earning.less";
 
 class Earning extends React.Component {
@@ -13,13 +15,18 @@ class Earning extends React.Component {
   ];
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="wrap_earning">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          团队收益
+          <FormattedMessage
+            id="tuanduishouyi"
+            defaultMessage={defaultApp['tuanduishouyi']}
+          />
         </NavBar>
 
         {/* 内容部分 */}

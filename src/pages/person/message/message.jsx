@@ -2,6 +2,8 @@ import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
 import {Content}   from '@component/Content/Content'
 import  MessageList  from "./messageList.jsx";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./message.less";
 
 class Message extends React.Component {
@@ -16,6 +18,8 @@ class Message extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="wrap_message">
         <NavBar
@@ -24,12 +28,15 @@ class Message extends React.Component {
           rightContent={[
             <i
               key="1"
-              onClick={() => this.props.history.push('/personal/messageForm')}
+              onClick={() => this.props.history.push('/messageForm')}
               className={`iconfont icon-icon_add add_message`}
             ></i>
           ]}
         >
-          我的留言
+          <FormattedMessage
+            id="wodeliuyan"
+            defaultMessage={defaultApp['wodeliuyan']}
+          />
         </NavBar>
 
         {/* 内容部分 */}

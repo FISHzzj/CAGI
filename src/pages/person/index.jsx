@@ -2,6 +2,8 @@ import React from 'react'
 import { withRouter } from "react-router";
 import { Toast } from "antd-mobile";
 import { MyImage } from "@component/MyImage/MyImage";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./index.less";
 
 import { userInfo } from "@api/auth";
@@ -25,6 +27,8 @@ class App extends React.Component{
         accountInfo: {}
       };
     render(){
+      const defaultApp = window.app['en-US'];
+
         return (
             <div className="wrap">
               {/* 页面头部
@@ -33,19 +37,39 @@ class App extends React.Component{
               <div className="content">
       
                 <div className="part">
-                  <div className="part_title">创投</div>
+                  <div className="part_title">
+                    <FormattedMessage
+                      id="chuantou"
+                      defaultMessage={defaultApp['chuantou']}
+                    />
+                  </div>
                   <div className="remain">
                     <div className="remain_item">
                       <div>{this.state.userInfo.investment_money}</div>
-                      <div>创投杠杆账户总额</div>
+                      <div>
+                        <FormattedMessage
+                        id="chuantouzonge"
+                        defaultMessage={defaultApp['chuantouzonge']}
+                      />
+                      </div>
                     </div>
                     <div className="remain_item">
                       <div>{parseFloat(this.state.userInfo.investment_money - this.state.accountInfo[5]).toFixed(4)}</div>
-                      <div>已释放数量</div>
+                      <div>
+                        <FormattedMessage
+                          id="yisifangshuliang"
+                          defaultMessage={defaultApp['yisifangshuliang']}
+                        />
+                      </div>
                     </div>
                     <div className="remain_item">
                       <div>{this.state.accountInfo[5]}</div>
-                      <div>剩余杠杆余额</div>
+                      <div>
+                        <FormattedMessage
+                          id="shengyugangangyue"
+                          defaultMessage={defaultApp['shengyugangangyue']}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -53,33 +77,58 @@ class App extends React.Component{
       
                 {/* 账户余额部分 */}
                 <div className="part">
-                  <div className="part_title">账户余额</div>
+                  <div className="part_title">
+                    <FormattedMessage
+                          id="yuezhanghu"
+                          defaultMessage={defaultApp['yuezhanghu']}
+                        />
+                  </div>
                   <div className="balance">
                     <div className="balance_item">
                       <MyImage src={require("@static/icon/home_tbau.png")} className="balance_item_logo"></MyImage>
                       <div className="balance_item_info">
-                        <div>TBAU账户</div>
+                        <div>
+                          <FormattedMessage
+                            id="TBAUzhanghu"
+                            defaultMessage={defaultApp['TBAUzhanghu']}
+                          />
+                        </div>
                         <div>{this.state.accountInfo[3]}</div>
                       </div>
                     </div>
                     <div className="balance_item">
                       <MyImage src={require("@static/icon/home_psbau.png")} className="balance_item_logo"></MyImage>
                       <div className="balance_item_info">
-                        <div>PSBAU账户</div>
+                        <div>
+                          <FormattedMessage
+                            id="PSBAUzhanghu"
+                            defaultMessage={defaultApp['PSBAUzhanghu']}
+                          />
+                        </div>
                         <div>{this.state.accountInfo[4]}</div>
                       </div>
                     </div>
                     <div className="balance_item">
                       <MyImage src={require("@static/icon/home_usdt.png")} className="balance_item_logo"></MyImage>
                       <div className="balance_item_info">
-                        <div>USDT账户</div>
+                        <div>
+                          <FormattedMessage
+                            id="USDTzhanghu"
+                            defaultMessage={defaultApp['USDTzhanghu']}
+                          />
+                        </div>
                         <div>{this.state.accountInfo[1]}</div>
                       </div>
                     </div>
                     <div className="balance_item">
                       <MyImage src={require("@static/icon/home_jyb.png")} className="balance_item_logo"></MyImage>
                       <div className="balance_item_info">
-                        <div>JYB账户</div>
+                        <div>
+                          <FormattedMessage
+                            id="JYBzhanghu"
+                            defaultMessage={defaultApp['JYBzhanghu']}
+                          />
+                        </div>
                         <div>{this.state.accountInfo[2]}</div>
                       </div>
                     </div>
@@ -87,7 +136,12 @@ class App extends React.Component{
                 </div>
       
                 <div className="part">
-                  <div className="part_title">功能</div>
+                  <div className="part_title">
+                    <FormattedMessage
+                      id="gongneng"
+                      defaultMessage={defaultApp['gongneng']}
+                    />
+                  </div>
                   <div className="control">
                     <div
                       className="control_item"
@@ -99,7 +153,12 @@ class App extends React.Component{
                         src={require("@static/icon/my/zichanmingxi.png")}
                         className="control_item_img"
                       ></MyImage>
-                      <span className="control_item_des">资产明细</span>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="zicangmingxi"
+                          defaultMessage={defaultApp['zicangmingxi']}
+                        />
+                      </span>
                     </div>
                     <div
                       className="control_item"
@@ -111,7 +170,12 @@ class App extends React.Component{
                         src={require("@static/icon/my/tuanduishouyi.png")}
                         className="control_item_img"
                       ></MyImage>
-                      <span className="control_item_des">团队收益</span>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="tuanduishouji"
+                          defaultMessage={defaultApp['tuanduishouji']}
+                        />
+                      </span>
                     </div>
                     <div
                       className="control_item"
@@ -123,7 +187,12 @@ class App extends React.Component{
                         src={require("@static/icon/my/zaixianduihuan.png")}
                         className="control_item_img"
                       ></MyImage>
-                      <span className="control_item_des">在线兑换</span>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="zaixiantuihuan"
+                          defaultMessage={defaultApp['zaixiantuihuan']}
+                        />
+                      </span>
                     </div>
                     <div
                       className="control_item"
@@ -138,7 +207,12 @@ class App extends React.Component{
                       <i
                         className={`iconfont icon-weibiaoti5  control_item_img`}
                       ></i>
-                      <span className="control_item_des">转账</span>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="zhuanzhang"
+                          defaultMessage={defaultApp['zhuanzhang']}
+                        />
+                      </span>
                     </div>
       
                     <div className="control_item"
@@ -149,7 +223,12 @@ class App extends React.Component{
                         src={require("@static/icon/my/xiugaimima.png")}
                         className="control_item_img"
                       ></MyImage>
-                      <span className="control_item_des">修改密码</span>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="xiugaimima"
+                          defaultMessage={defaultApp['xiugaimima']}
+                        />
+                      </span>
                     </div>
                     <div
                       className="control_item"
@@ -161,7 +240,12 @@ class App extends React.Component{
                         src={require("@static/icon/my/zaixianliuyan.png")}
                         className="control_item_img"
                       ></MyImage>
-                      <span className="control_item_des">在线留言</span>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="zaixianliuyan"
+                          defaultMessage={defaultApp['zaixianliuyan']}
+                        />
+                      </span>
                     </div>
                     <div
                       className="control_item"
@@ -173,7 +257,12 @@ class App extends React.Component{
                         src={require("@static/icon/my/wodetuandui.png")}
                         className="control_item_img"
                       ></MyImage>
-                      <span className="control_item_des">我的团队</span>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="mytuandui"
+                          defaultMessage={defaultApp['mytuandui']}
+                        />
+                      </span>
                     </div>
                     <div
                       className="control_item"
@@ -183,7 +272,12 @@ class App extends React.Component{
                         src={require("@static/icon/my/tuiguangerweima.png")}
                         className="control_item_img"
                       ></MyImage>
-                      <span className="control_item_des">推广二维码</span>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="tuiguangerweima"
+                          defaultMessage={defaultApp['tuiguangerweima']}
+                        />
+                      </span>
                     </div>
                   </div>
                 </div>

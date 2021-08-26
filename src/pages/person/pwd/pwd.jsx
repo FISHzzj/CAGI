@@ -2,6 +2,8 @@ import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
 import  PwdForm  from "./pwdForm";
 import  PayPwdForm  from "./payPwdForm";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./pwd.less";
 
 class Pwd extends React.Component {
@@ -11,13 +13,18 @@ class Pwd extends React.Component {
   ];
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="wrap_pwd">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          修改密码
+           <FormattedMessage
+                  id="xiugaimima"
+                  defaultMessage={defaultApp['xiugaimima']}
+                />
         </NavBar>
 
         {/* 内容部分 */}

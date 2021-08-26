@@ -2,6 +2,8 @@ import React from "react";
 import { List, InputItem, Button, Toast } from "antd-mobile";
 import { withRouter } from 'react-router'
 import { createForm } from "rc-form";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import  "./pwd.less";
 
 import { editPassword } from '@api/auth'
@@ -35,6 +37,7 @@ class PwdForm extends React.Component {
 
   render() {
     const { getFieldProps } = this.props.form;
+    const defaultApp = window.app['en-US'];
 
     return (
       <div className="form_wrap">
@@ -45,7 +48,10 @@ class PwdForm extends React.Component {
             placeholder="原登录密码"
             clear
           >
-            旧密码
+            <FormattedMessage
+                  id="jiumima"
+                  defaultMessage={defaultApp['jiumima']}
+                />
           </InputItem>
           <InputItem
             type="password"
@@ -53,7 +59,10 @@ class PwdForm extends React.Component {
             placeholder="新登录密码"
             clear
           >
-            新密码
+             <FormattedMessage
+                  id="xinmima"
+                  defaultMessage={defaultApp['xinmima']}
+                />
           </InputItem>
           <InputItem
             type="password"
@@ -61,11 +70,19 @@ class PwdForm extends React.Component {
             placeholder="确认新密码"
             clear
           >
-            确认密码
+            <FormattedMessage
+              id="querenmima"
+              defaultMessage={defaultApp['querenmima']}
+            />
           </InputItem>
         </List>
 
-        <Button onClick={this.submit} className="submit">提交</Button>
+        <Button onClick={this.submit} className="submit">
+        <FormattedMessage
+              id="tijiao"
+              defaultMessage={defaultApp['tijiao']}
+            />
+        </Button>
       </div >
     )
   }

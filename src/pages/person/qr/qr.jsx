@@ -2,6 +2,8 @@ import React from "react";
 import { NavBar, Icon, Button, Toast } from "antd-mobile";
 import QRCode from "qrcode.react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./qr.less";
 
 import { userInfo } from "@api/auth";
@@ -19,6 +21,8 @@ class Qr extends React.Component {
   };
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="qr_wrap">
         <NavBar
@@ -26,7 +30,10 @@ class Qr extends React.Component {
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          我的二维码
+           <FormattedMessage
+              id="wodeerweima"
+              defaultMessage={defaultApp['wodeerweima']}
+          />
         </NavBar>
 
         <QRCode className="qr" value={`http://${window.location.host}/#/register/?uuid=${this.state.uuid}`} />
@@ -34,7 +41,10 @@ class Qr extends React.Component {
         <div className="seperate"></div>
 
         <div className="address_wrap">
-          <div>推广邀请码</div>
+          <div><FormattedMessage
+              id="yaoqingma"
+              defaultMessage={defaultApp['yaoqingma']}
+          /></div>
           <div className="address">{this.state.uuid}</div>
         </div>
 
@@ -42,7 +52,12 @@ class Qr extends React.Component {
           text={this.state.uuid}
           onCopy={() => Toast.info("复制成功", 2, null, false)}
         >
-          <Button className="upload_btn">复制</Button>
+          <Button className="upload_btn">
+            <FormattedMessage
+                id="fuzhi"
+                defaultMessage={defaultApp['fuzhi']}
+            />
+          </Button>
         </CopyToClipboard>
       </div>
     );

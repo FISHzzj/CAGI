@@ -3,6 +3,8 @@ import { MyImage } from "@component/MyImage/MyImage";
 import { NavBar, Icon, List, Button, InputItem, Toast } from "antd-mobile";
 import { uploadImage } from '@src/utility/imageUpload'
 import { createForm } from "rc-form";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import  "./intro.less";
 
 import { userInfo, editUserInfo } from "@api/auth";
@@ -50,6 +52,7 @@ class IntroForm extends React.Component {
 
   render() {
     const { getFieldProps, getFieldValue } = this.props.form;
+    const defaultApp = window.app['en-US'];
 
     return (
       <div className="intro_form_wrap">
@@ -59,7 +62,10 @@ class IntroForm extends React.Component {
             this.props.history.go(-1);
           }}
         >
-          修改资料
+           <FormattedMessage
+              id="xiugaiziliao"
+              defaultMessage={defaultApp['xiugaiziliao']}
+          />
         </NavBar>
 
         <List className="list_wrap">
@@ -68,7 +74,10 @@ class IntroForm extends React.Component {
             arrow="horizontal"
             onClick={() => { this.fileRef.current.click(); }}
           >
-            个人头像
+            <FormattedMessage
+              id="gerentouxiang"
+              defaultMessage={defaultApp['gerentouxiang']}
+          />
           </List.Item>
 
           <InputItem
@@ -76,12 +85,18 @@ class IntroForm extends React.Component {
             placeholder="请输入会员昵称"
             clear
           >
-            会员昵称
+            <FormattedMessage
+              id="huiyuannicheng"
+              defaultMessage={defaultApp['huiyuannicheng']}
+          />
           </InputItem>
         </List>
 
         <Button onClick={this.submit} className="logout">
-          完成
+          <FormattedMessage
+                id="wancheng"
+                defaultMessage={defaultApp['wancheng']}
+            />
         </Button>
 
         <input type="file" ref={this.fileRef} className="input_hidden" />

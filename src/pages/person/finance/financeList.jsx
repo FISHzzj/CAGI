@@ -1,5 +1,7 @@
 import React from "react";
 import { PullToRefresh } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./finance.less";
 
 import { billList } from '@api/asset'
@@ -43,6 +45,8 @@ class FinanceList extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <PullToRefresh
         className="list_wrap"
@@ -59,25 +63,50 @@ class FinanceList extends React.Component {
               <span style={{ color: i.type === 1 ? '#36db97' : '#FC7383' }}>{i.type === 1 ? '+' : '-'}{i.account}</span>
             </div>
             <div className="item_line">
-              <span>账户类型</span>
+              <span>
+                <FormattedMessage
+                  id="zhanghuleixing"
+                  defaultMessage={defaultApp['zhanghuleixing']}
+                />
+              </span>
               <span>{i.bill_type}</span>
             </div>
             <div className="item_line">
-              <span>账户余额</span>
+              <span>
+                <FormattedMessage
+                  id="zhanghuyue"
+                  defaultMessage={defaultApp['zhanghuyue']}
+                />
+              </span>
               <span style={{ color: "#FFD200" }}>{i.after_account}</span>
             </div>
             <div className="item_line">
-              <span>备注描述</span>
+              <span>
+                <FormattedMessage
+                  id="beizhumiaoshu"
+                  defaultMessage={defaultApp['beizhumiaoshu']}
+                />
+              </span>
               <span>{i.remark || '无'}</span>
             </div>
             <div className="item_line">
-              <span>交易日期</span>
+              <span>
+                <FormattedMessage
+                  id="jiaoyiri"
+                  defaultMessage={defaultApp['jiaoyiri']}
+                />
+              </span>
               <span>{i.create_time}</span>
             </div>
           </div>
         ))}
         {this.state.data.length === 0 && (
-          <div className="no_data">暂无数据</div>
+          <div className="no_data">
+            <FormattedMessage
+              id="zanwushuju"
+              defaultMessage={defaultApp['zanwushuju']}
+            />
+          </div>
         )}
       </PullToRefresh>
     );

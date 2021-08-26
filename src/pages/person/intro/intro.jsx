@@ -1,6 +1,8 @@
 import React from "react";
 import { MyImage } from "@component/MyImage/MyImage";
 import { NavBar, Icon, List, Button } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./intro.less";
 
 import { userInfo } from "@api/auth";
@@ -24,6 +26,8 @@ class Intro extends React.Component {
     this.props.history.replace("/login");
   };
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="intro_wrap">
         <NavBar
@@ -39,22 +43,46 @@ class Intro extends React.Component {
             ></i>
           ]}
         >
-          个人资料
+           <FormattedMessage
+              id="gerenziliao"
+              defaultMessage={defaultApp['gerenziliao']}
+          />
         </NavBar>
 
         <List className="list_wrap">
           <List.Item
             extra={<MyImage src={this.state.userInfo.head_image} className="logo"></MyImage>}
           >
-            个人头像
+             <FormattedMessage
+              id="gerentouxiang"
+              defaultMessage={defaultApp['gerentouxiang']}
+          />
           </List.Item>
-          <List.Item extra={this.state.userInfo.phone || '-'}>注册手机号</List.Item>
-          <List.Item extra={this.state.userInfo.member}>会员编号</List.Item>
-          <List.Item extra={this.state.userInfo.nick_name}>会员昵称</List.Item>
+          <List.Item extra={this.state.userInfo.phone || '-'}>
+            <FormattedMessage
+                id="zhuceshouji"
+                defaultMessage={defaultApp['zhuceshouji']}
+            />
+          </List.Item>
+          <List.Item extra={this.state.userInfo.member}>
+            <FormattedMessage
+                id="huiyuanbianhao"
+                defaultMessage={defaultApp['huiyuanbianhao']}
+            />
+          </List.Item>
+          <List.Item extra={this.state.userInfo.nick_name}>
+            <FormattedMessage
+                id="huiyuannicheng"
+                defaultMessage={defaultApp['huiyuannicheng']}
+            />
+          </List.Item>
         </List>
 
         <Button onClick={this.logout} className="logout">
-          退出登录
+          <FormattedMessage
+                id="tuichudenglv"
+                defaultMessage={defaultApp['tuichudenglv']}
+            />
         </Button>
       </div>
     );

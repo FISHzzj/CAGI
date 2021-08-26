@@ -1,5 +1,7 @@
 import React from "react";
 import { PullToRefresh } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./earning.less";
 
 import { awardRecordList } from '@api/home'
@@ -45,6 +47,8 @@ class EarningList extends React.Component {
     );
   }
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <PullToRefresh
         className="list_wrap"
@@ -61,25 +65,50 @@ class EarningList extends React.Component {
               <span>+{i.money}</span>
             </div>
             <div className="item_line">
-              <span>收益类型</span>
+              <span>
+                <FormattedMessage
+                  id="shouyileixing"
+                  defaultMessage={defaultApp['shouyileixing']}
+                />
+              </span>
               <span>{i.award_name}</span>
             </div>
             <div className="item_line">
-              <span>实际金额</span>
+              <span>
+                <FormattedMessage
+                  id="shijijine"
+                  defaultMessage={defaultApp['shijijine']}
+                />
+              </span>
               <span style={{ color: "#FFD200" }}>{i.money}</span>
             </div>
             <div className="item_line">
-              <span>备注描述</span>
+              <span>
+                <FormattedMessage
+                  id="beizhumiaoshu"
+                  defaultMessage={defaultApp['beizhumiaoshu']}
+                />
+              </span>
               <span>{i.remark}</span>
             </div>
             <div className="item_line">
-              <span>交易日期</span>
+              <span>
+                <FormattedMessage
+                  id="jiaoyiri"
+                  defaultMessage={defaultApp['jiaoyiri']}
+                />
+              </span>
               <span>{i.create_time}</span>
             </div>
           </div>
         ))}
         {this.state.data.length === 0 && (
-          <div className="no_data">暂无数据</div>
+          <div className="no_data">
+            <FormattedMessage
+                  id="zanwushuju"
+                  defaultMessage={defaultApp['zanwushuju']}
+                />
+          </div>
         )}
       </PullToRefresh>
     );

@@ -11,6 +11,8 @@ import {
 import { createForm } from "rc-form";
 import { withRouter } from "react-router";
 import { MyImage } from "@component/MyImage/MyImage";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./exchange.less";
 
 import { configConvertList, convertCommit } from "@api/asset";
@@ -80,6 +82,7 @@ class Exchange extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
     const { getFieldProps } = this.props.form;
     let selectedInfo = this.state.exchangeInfo[this.state.selectedIndex]
     const _this = this;
@@ -92,14 +95,17 @@ class Exchange extends React.Component {
           rightContent={[
             <i
               onClick={() => {
-                this.props.history.push("/personal/exchange/record");
+                this.props.history.push("/exchangerecord");
               }}
               key="1"
               className={`iconfont icon-history`}
             ></i>
           ]}
         >
-          兑换
+          <FormattedMessage
+            id="duihuan"
+            defaultMessage={defaultApp['duihuan']}
+          />
         </NavBar>
 
         <div className={`part exchange_panel`}>
@@ -126,13 +132,33 @@ class Exchange extends React.Component {
             </div>
           </div>
           <div className="exchange_rate">
-            <span className="exchange_rate_span">汇率：</span>
+            <span className="exchange_rate_span">
+              <FormattedMessage
+                id="huilv"
+                defaultMessage={defaultApp['huilv']}
+              />：
+            </span>
             <span>1 {selectedInfo?.currency_name} = {selectedInfo ? selectedInfo.currency_rate / selectedInfo.target_currency_rate : '-'} {selectedInfo?.target_currency_name}</span>
           </div>
           <div className="exchange_rate">
-            <span className="exchange_rate_span">最小数量：</span><span>{selectedInfo?.min}</span>
-            <span className="exchange_rate_span">最大数量：</span><span>{selectedInfo?.max}</span>
-            <span className="exchange_rate_span">基数：</span><span>{selectedInfo?.cardinal_number}</span>
+            <span className="exchange_rate_span">
+              <FormattedMessage
+                id="zuixiaoshuliang"
+                defaultMessage={defaultApp['zuixiaoshuliang']}
+              />：  
+            </span><span>{selectedInfo?.min}</span>
+            <span className="exchange_rate_span">
+              <FormattedMessage
+                  id="zuidashuliang"
+                  defaultMessage={defaultApp['zuidashuliang']}
+                />：
+            </span><span>{selectedInfo?.max}</span>
+            <span className="exchange_rate_span">
+              <FormattedMessage
+                  id="jishu"
+                  defaultMessage={defaultApp['jishu']}
+                />：  
+            </span><span>{selectedInfo?.cardinal_number}</span>
           </div>
         </div>
 
@@ -153,7 +179,11 @@ class Exchange extends React.Component {
                 className="icon"
                 src={require("@static/icon/num.png")}
               ></MyImage>
-              <span>兑换数量：</span>
+              <span>
+                <FormattedMessage
+                  id="duihuanshuliang"
+                  defaultMessage={defaultApp['duihuanshuliang']}
+                />：</span>
             </div>
           </InputItem>
           <List.Item extra={selectedInfo?.account || '-'}>
@@ -162,7 +192,12 @@ class Exchange extends React.Component {
                 className="icon"
                 src={require("@static/icon/num.png")}
               ></MyImage>
-              <span>账户余额：</span>
+              <span>
+                <FormattedMessage
+                  id="zhanghuyue"
+                  defaultMessage={defaultApp['zhanghuyue']}
+                />：
+              </span>
             </div>
           </List.Item>
           <List.Item extra={selectedInfo?.rate * this.state.inputMoney / 100 + ` (${selectedInfo?.rate}%)`}>
@@ -171,7 +206,12 @@ class Exchange extends React.Component {
                 className="icon"
                 src={require("@static/icon/fee.png")}
               ></MyImage>
-              <span>手续费：</span>
+              <span>
+                <FormattedMessage
+                  id="shouxufei"
+                  defaultMessage={defaultApp['shouxufei']}
+                />：
+              </span>
             </div>
           </List.Item>
           <InputItem
@@ -185,7 +225,12 @@ class Exchange extends React.Component {
                 className="icon"
                 src={require("@static/icon/lock.png")}
               ></MyImage>
-              <span>二级密码：</span>
+              <span>
+                <FormattedMessage
+                  id="erjimima"
+                  defaultMessage={defaultApp['erjimima']}
+                />：
+              </span>
             </div>
           </InputItem>
         </List>
@@ -194,7 +239,10 @@ class Exchange extends React.Component {
           activeStyle={{ backgroundColor: "#d6a706" }}
           onClick={this.submit}
         >
-          提交
+          <FormattedMessage
+            id="tijiao"
+            defaultMessage={defaultApp['tijiao']}
+          />
         </Button>
       </div>
     );

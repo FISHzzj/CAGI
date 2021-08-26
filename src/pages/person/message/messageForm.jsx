@@ -11,6 +11,7 @@ import {
 } from "antd-mobile";
 import { createForm } from "rc-form";
 import { uploadImage } from "@src/utility/imageUpload";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
 import "./message.less";
 
 import { sendMail } from '@api/home'
@@ -61,6 +62,7 @@ class MessageForm extends React.Component {
     render() {
         const { getFieldProps } = this.props.form;
         const { files } = this.state;
+        const defaultApp = window.app['en-US'];
 
         return (
             <div className="form_wrap">
@@ -68,7 +70,10 @@ class MessageForm extends React.Component {
                     icon={<Icon type="left" size="xs" />}
                     onLeftClick={() => this.props.history.go(-1)}
                 >
-                    我要留言
+                    <FormattedMessage
+                        id="wodeliuyan"
+                        defaultMessage={defaultApp['wodeliuyan']}
+                    />
                 </NavBar>
 
                 <div className="list_wrap">
@@ -78,7 +83,10 @@ class MessageForm extends React.Component {
                             clear
                             placeholder="请输入标题"
                         >
-                            标题
+                            <FormattedMessage
+                                id="biaoti"
+                                defaultMessage={defaultApp['biaoti']}
+                            />  
                     </InputItem>
                         <TextareaItem
                             title="内容"
@@ -92,7 +100,11 @@ class MessageForm extends React.Component {
                         </TextareaItem>
                     </List>
 
-                    <div className="message_title">上传凭证</div>
+                    <div className="message_title"> 
+                            <FormattedMessage
+                                id="shangchuanpinzheng"
+                                defaultMessage={defaultApp['shangchuanpinzheng']}
+                            /> </div>
                     <div className={`pic_content`}>
                         <ImagePicker
                             files={files}
@@ -105,7 +117,10 @@ class MessageForm extends React.Component {
                     </div>
 
                     <Button onClick={this.submit} className="submit">
-                        提交
+                        <FormattedMessage
+                            id="tijiao"
+                            defaultMessage={defaultApp['tijiao']}
+                        /> 
                 </Button>
                 </div>
             </div>

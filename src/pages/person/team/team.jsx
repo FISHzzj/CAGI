@@ -1,5 +1,7 @@
 import React from "react";
 import { NavBar, Icon, Accordion } from "antd-mobile";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./team.less";
 
 import { teamInfo } from '@api/home'
@@ -34,6 +36,8 @@ class MyTeam extends React.Component {
   }
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="team_wrap">
         <NavBar
@@ -42,21 +46,39 @@ class MyTeam extends React.Component {
             this.props.history.go(-1);
           }}
         >
-          我的团队
+           <FormattedMessage
+              id="wodetuandui"
+              defaultMessage={defaultApp['wodetuandui']}
+            />
         </NavBar>
 
         {/* 统计部分 */}
         <div className="statistic">
           <div className="statistic_item">
-            <span>团队人数</span>
+            <span>
+              <FormattedMessage
+                id="tuanduirenshu"
+                defaultMessage={defaultApp['tuanduirenshu']}
+              />
+            </span>
             <span className="statistic_item_num">{this.state.statistic[0]}</span>
           </div>
           <div className="statistic_item">
-            <span>新增业绩</span>
+            <span>
+              <FormattedMessage
+                id="zengjiayeji"
+                defaultMessage={defaultApp['zengjiayeji']}
+              />
+            </span>
             <span className="statistic_item_num">{this.state.statistic[1]}</span>
           </div>
           <div className="statistic_item">
-            <span>团队总业绩</span>
+            <span>
+              <FormattedMessage
+                id="tuanduizongyeji"
+                defaultMessage={defaultApp['tuanduizongyeji']}
+              />
+            </span>
             <span className="statistic_item_num">{this.state.statistic[2]}</span>
           </div>
         </div>

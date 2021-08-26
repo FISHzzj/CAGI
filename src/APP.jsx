@@ -10,9 +10,12 @@ import  Shopcart from './pages/shopcart/index.jsx';
 import  Person  from './pages/person/index.jsx';
 import  Finance  from './pages/person/finance/finance.jsx';
 import  ExchangeWrapper  from './pages/person/exchange/exchange.jsx';
+import  ExchangeRecord  from './pages/person/exchange/exchangeRecord.jsx';
 import  Earning  from './pages/person/earning/earning.jsx';
 import  Pwd  from './pages/person/pwd/pwd.jsx';
 import  Message  from './pages/person/message/message.jsx';
+import  MessageFormWrapper  from './pages/person/message/messageForm.jsx';
+
 import  MyTeam  from './pages/person/team/team.jsx';
 import  Qr  from './pages/person/qr/qr.jsx';
 import  Intro  from './pages/person/intro/intro.jsx';
@@ -149,9 +152,11 @@ class App extends React.Component {
         'withdrawRecord',
         'finance',
         'exchange',
+        'exchangeRecord',
         'earning',
         'pwd',
         'message',
+        'messageForm',
         'myteam',
         'qr',
         'intro',
@@ -159,6 +164,7 @@ class App extends React.Component {
         'login',
         'register',
         'forget',
+   
 
 
       ],
@@ -293,9 +299,11 @@ class App extends React.Component {
               <Route path="/withdrawRecord" component={withdrawRecord}></Route>
               <Route path="/finance" component={Finance}></Route>
               <Route path="/exchange" component={ExchangeWrapper}></Route>
+              <Route path="/exchangeRecord" component={ExchangeRecord}></Route>
               <Route path="/earning" component={Earning}></Route>
               <Route path="/pwd" component={Pwd}></Route>
               <Route path="/message" component={Message}></Route>
+              <Route path="/messageForm" component={MessageFormWrapper}></Route>
               <Route path="/myteam" component={MyTeam}></Route>
               <Route path="/qr" component={Qr}></Route>
               <Route path="/intro" component={Intro}></Route>

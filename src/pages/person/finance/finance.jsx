@@ -1,11 +1,13 @@
 import React from "react";
 import { NavBar, Icon, Tabs } from "antd-mobile";
 import FinanceList from "./financeList";
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./finance.less";
 
 class Finance extends React.Component {
   navTab = [
-    { title: "全部", sub: 0 },
+    { title: "All", sub: 0 },
     { title: "USDT", sub: 3 },
     { title: "JYB", sub: 1 },
     { title: "TBAU", sub: 4 },
@@ -13,13 +15,18 @@ class Finance extends React.Component {
   ];
 
   render() {
+    const defaultApp = window.app['en-US'];
+
     return (
       <div className="wrap_finance">
         <NavBar
           icon={<Icon type="left" size="xs" />}
           onLeftClick={() => this.props.history.go(-1)}
         >
-          资产明细
+          <FormattedMessage
+              id="zicanmingxi"
+              defaultMessage={defaultApp['zicanmingxi']}
+            />
         </NavBar>
 
         {/* 内容部分 */}

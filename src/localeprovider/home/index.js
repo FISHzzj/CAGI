@@ -87,6 +87,104 @@ window.app = {
          //------------------------person------------------------------------------
          'chuantou': '创投',
          'chuantouzonge': '创投杠杆账户总额',
+         'yisifangshuliang': '已释放数量',
+         'shengyugangangyue': '剩余杠杆余额',
+         'yuezhanghu': '账户余额',
+         'TBAUzhanghu': 'TBAU账户',
+         'PSBAUzhanghu': 'PSBAU账户',
+         'USDTzhanghu': 'USDT账户',
+         'JYBzhanghu': 'JYB账户',
+         'gongneng': '功能',
+         'zicangmingxi': '资产明细',
+         'tuanduishouji': '团队收益',
+         'zaixiantuihuan': '在线兑换',
+         'zhuanzhang': '转账',
+         'xiugaimima': '修改密码',
+         'zaixianliuyan': '在线留言',
+         'mytuandui': '我的团队',
+         'tuiguangerweima': '推广二维码',
+         //--------------------------finance------------------------------------------------
+         'zicanmingxi': '资产明细',
+         'zhanghuleixing': '账户类型',
+         'zhanghuyue': '账户余额',
+         'beizhumiaoshu': '备注描述',
+         'jiaoyiri': '交易日期',
+         'zanwushuju': '暂无数据',
+        //--------------------------team------------------------------------------------
+        'wodetuandui': '我的团队',
+        'tuanduirenshu': '团队人数',
+        'zengjiayeji': '新增业绩',
+        'tuanduizongyeji': '团队总业绩',
+        //--------------------------earning------------------------------------------------
+        'tuanduishouyi': '团队收益',
+        'shouyileixing': '收益类型',
+        'shijijine': '实际金额',
+        'beizhumiaoshu': '备注描述',
+        'jiaoyiri': '交易日期',
+        'zanwushuju': '暂无数据',
+        //--------------------------exchange------------------------------------------------
+        'duihuan': '兑换',
+        'huilv': '汇率',
+        'zuixiaoshuliang': '最小数量',
+        'zuidashuliang': '最大数量',
+        'jishu': '基数',
+        'duihuanshuliang': '兑换数量',
+        'zhanghuyue': '账户余额',
+        'shouxufei': '手续费',
+        'erjimima': '二级密码',
+        'tijiao': '提交',
+        'duihuanjilv': '兑换记录',
+        'zhuanhuanshuliang': '转换数量',
+        'zhuanchuzhanghu': '转出账户',
+        'zhuanruzhanghu': '转入账户',
+        'zhanghu': '账户',
+        'zhuanhuanbili': '转换比例',
+        'jiaoyiriqi': '交易日期',
+        //--------------------------pwd------------------------------------------------
+        'jiumima': '旧密码',
+        'xinmima': '新密码',
+        'querenmima': '确认密码',
+        'tijiao': '提交',
+        'xiugaimima': '修改密码',
+        'zhifumima': '支付密码',
+        //--------------------------message------------------------------------------------
+        'wodeliuyan': '我的留言',
+        'biaoti': '标题',
+        'shangchuanpinzheng': '上传凭证',
+        'tijiao': '提交',
+        'zangwushuju': '暂无数据',
+        //--------------------------qr-----------------------------------------------------
+        'wodeerweima': '我的二维码',
+        'yaoqingma': '推广邀请码',
+        'fuzhi': '复制',
+        //--------------------------intro-----------------------------------------------------
+        'gerenziliao': '个人资料',
+        'gerentouxiang': '个人头像',
+        'zhuceshouji': '注册手机号',
+        'huiyuanbianhao': '会员编号',
+        'huiyuannicheng': '会员昵称',
+        'tuichudenglv': '退出登录',
+        'xiugaiziliao': '修改资料',
+        'wancheng': '完成'
+
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
 
 
 
@@ -180,7 +278,98 @@ window.app = {
         'haode': 'well',
         //------------------------person------------------------------------------
         'chuantou': 'Venture capital',
-        'chuantouzonge': 'Total leverage account of venture capital',
+        'chuantouzonge': 'Total leverage',
+        'yisifangshuliang': 'Released quantity',
+        'shengyugangangyue': 'Remaining balance',
+        'yuezhanghu': 'Account balance',
+        'TBAUzhanghu': 'Tbau account',
+         'PSBAUzhanghu': 'PSBAU account',
+         'USDTzhanghu': 'USDT account',
+         'JYBzhanghu': 'JYB account',
+         'gongneng': 'function',
+         'zicangmingxi': 'Asset details',
+         'tuanduishouji': 'Team benefits',
+         'zaixiantuihuan': 'Online exchange',
+         'zhuanzhang': 'transfer accounts',
+         'xiugaimima': 'Change Password',
+         'zaixianliuyan': 'Online Message',
+         'mytuandui': 'My team',
+         'tuiguangerweima': 'Generalized QR code',
+         //--------------------------finance------------------------------------------------
+         'zicanmingxi': 'Asset details',
+         'zhanghuleixing': 'Account type',
+         'zhanghuyue': 'Account balance',
+         'beizhumiaoshu': 'Remarks description',
+         'jiaoyiri': 'Transaction date',
+         'zanwushuju': 'No data',
+        //--------------------------team------------------------------------------------
+        'wodetuandui': 'My team',
+        'tuanduirenshu': 'Number of teams',
+        'zengjiayeji': 'New performance',
+        'tuanduizongyeji': 'Total team performance',
+        //--------------------------earning------------------------------------------------
+        'tuanduishouyi': 'Team benefits',
+        'shouyileixing': 'Income type',
+        'shijijine': 'Actual amount',
+        'beizhumiaoshu': 'Remarks description',
+        'jiaoyiri': 'Transaction date',
+        'zanwushuju': 'No data',
+        //--------------------------exchange------------------------------------------------
+        'duihuan': 'exchange',
+        'huilv': 'exchange rate',
+        'zuixiaoshuliang': 'Minimum quantity',
+        'zuidashuliang': 'Maximum quantity',
+        'jishu': 'base',
+        'duihuanshuliang': 'Exchange quantity',
+        'zhanghuyue': 'Account balance',
+        'shouxufei': 'Service Charge',
+        'erjimima': 'Secondary password',
+        'tijiao': 'Submit',
+        'duihuanjilv': 'Exchange record',
+        'zhuanhuanshuliang': 'Number of conversions',
+        'zhuanchuzhanghu': 'Transfer out account',
+        'zhuanruzhanghu': 'Transfer to account',
+        'zhanghu': 'account',
+        'zhuanhuanbili': 'Conversion scale',
+        'jiaoyiriqi': 'Transaction date',
+        //--------------------------pwd------------------------------------------------
+        'jiumima': 'Old password',
+        'xinmima': 'New password',
+        'querenmima': 'Confirm password',
+        'tijiao': 'Submit',
+        'xiugaimima': 'Change Password',
+        'zhifumima': 'Payment password',
+        //--------------------------message------------------------------------------------
+        'wodeliuyan': 'My message',
+        'biaoti': 'title',
+        'shangchuanpinzheng': 'Upload voucher',
+        'tijiao': 'Submit',
+        'zangwushuju': 'No data',
+        //--------------------------qr-----------------------------------------------------
+        'wodeerweima': 'My QR code',
+        'yaoqingma': 'Promotion invitation code',
+        'fuzhi': 'copy',
+        //--------------------------intro-----------------------------------------------------
+        'gerenziliao': 'personal data',
+        'gerentouxiang': 'Personal Avatar',
+        'zhuceshouji': 'Registered mobile number',
+        'huiyuanbianhao': 'Member number',
+        'huiyuannicheng': 'Member nickname',
+        'tuichudenglv': 'Log out',
+        'xiugaiziliao': 'Modify data',
+        'wancheng': 'complete'
+
+        
+    
+
+
+
+
+
+
+
+
+
 
 
 
