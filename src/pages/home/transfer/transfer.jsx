@@ -25,7 +25,7 @@ class Transfer extends React.Component {
       this.currencyList = resp;
     });
     userAccount().then(resp => {
-      this.userAccount = resp.res;
+      this.userAccount = resp;
     });
   }
 

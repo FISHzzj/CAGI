@@ -21,7 +21,7 @@ class JybInvest extends React.Component {
     });
     userAccount().then(resp => {
       console.log(resp)
-      this.setState({ accountInfo: resp.res });
+      this.setState({ accountInfo: resp });
     });
   }
 

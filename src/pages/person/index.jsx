@@ -16,7 +16,7 @@ class App extends React.Component{
           this.setState({ userInfo: resp });
         });
         userAccount().then(resp => {
-          this.setState({ accountInfo: resp.res });
+          this.setState({ accountInfo: resp });
         });
     }
 
