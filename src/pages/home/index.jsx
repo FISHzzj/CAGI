@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Tabs, Badge, Carousel, NoticeBar, TabBar} from 'antd-mobile';
 import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
 
-import BScroll from 'better-scroll';
+// import BScroll from 'better-scroll';
 import Slide from './slide';
 // import { connect } from 'react-redux';
 // import {
@@ -67,25 +67,25 @@ class App extends React.Component {
 
   componentDidMount() {
     // this.props.IndexActivityModule();
-    forceCheck();
-    this.myScroll = new BScroll(this.wrap.current, {
-      bounce: false,
-      scrollbar: true,
-      probeType: 3,
-      click: true,
-      pullUpLoad: {
-        threshold: 50
-      }
-    });
+    // forceCheck();
+    // this.myScroll = new BScroll(this.wrap.current, {
+    //   bounce: false,
+    //   scrollbar: true,
+    //   probeType: 3,
+    //   click: true,
+    //   pullUpLoad: {
+    //     threshold: 50
+    //   }
+    // });
   }
-  refresh = () => {
-    if (this.myScroll) {
-      this.myScroll.refresh();
-      requestAnimationFrame(this.refresh);
-    }
-  };
+  // refresh = () => {
+  //   if (this.myScroll) {
+  //     this.myScroll.refresh();
+  //     requestAnimationFrame(this.refresh);
+  //   }
+  // };
   componentDidUpdate() {
-    requestAnimationFrame(this.refresh);
+    // requestAnimationFrame(this.refresh);
     // this.myScroll.on('scroll', e => {
     //   forceCheck();
     //   if (e.y < -130) {
@@ -105,7 +105,7 @@ class App extends React.Component {
     // const defaultApp = homeIndex['en-US'];
     // }
     return (
-      <div className="wrap" ref={this.wrap}>
+      <div className="wrap" >
         {/* banner栏位 */}
         <div className="banner">
           <Carousel
@@ -240,17 +240,17 @@ class App extends React.Component {
           </div>
           <div
             className="part_one_item"
-            onClick={() => {
-              this.props.history.push("/profit");
-            }}
+            // onClick={() => {
+            //   this.props.history.push("/profit");
+            // }}
           >
             <MyImage
               src={require("@static/icon/home_my_invest.png")}
               className="part_one_item_img"
             ></MyImage>
             <span className="part_one_item_title"><FormattedMessage
-              id="Mydividend"
-              defaultMessage={defaultApp['Mydividend']}
+              id="kuangji"
+              defaultMessage={defaultApp['kuangji']}
             /></span>
           </div>
           <div

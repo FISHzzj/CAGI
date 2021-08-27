@@ -41,7 +41,7 @@ class Login extends React.Component {
     return (
       <div className="login_wrap">
         <MyImage
-          src={require("../../../static/img/logo.png")}
+          src={require("@static/img/logo.png")}
           className="logo"
         ></MyImage>
 
@@ -52,7 +52,7 @@ class Login extends React.Component {
             clear
           >
             <MyImage
-              src={require("../../../static/icon/login_account.png")}
+              src={require("@static/icon/login_account.png")}
               className="icon"
             ></MyImage>
           </InputItem>
@@ -63,7 +63,7 @@ class Login extends React.Component {
             clear
           >
             <MyImage
-              src={require("../../../static/icon/login_password.png")}
+              src={require("@static/icon/login_password.png")}
               className="icon"
             ></MyImage>
           </InputItem>

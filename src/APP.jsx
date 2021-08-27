@@ -323,9 +323,9 @@ class App extends React.Component {
                 <i className="material-icons">favorite_border</i>
                 <span>首页</span>
               </NavLink>
-              <NavLink to="/ecosystem" activeClassName="active" className="link">
+              <NavLink to="/shop" activeClassName="active" className="link">
                 <i className="material-icons">reorder</i>
-                <span>生态</span>
+                <span>商城</span>
               </NavLink>
               <NavLink to="/news" activeClassName="active" className="link">
                 <i className="material-icons">card_giftcard</i>

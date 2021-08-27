@@ -118,10 +118,21 @@ module.exports = {
   ],
   mode: "development",
   devServer: {
-    contentBase: "../build",
+    contentBase: "../public",
     open: true,
     port: 9000,
-    hot: true
+    hot: true,
+    proxy:{
+      '/api':{
+        target: 'http://cagi.315red.com.cn',
+        pathRewrite:{
+          '^/api':'' //替换代理地址中的/api
+        },
+        secure:false, //设置证书免校验
+        changeOrigin:true, //确保请求主机名是：http://cagi.315red.com.cn
+      }
+    }
+
   },
   resolve: {
     extensions: [".js", ".json", ".jsx"],

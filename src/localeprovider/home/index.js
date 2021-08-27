@@ -10,6 +10,7 @@ window.app = {
         'chongbi': '充币',
         'tibi': '提币',
         'gonggao': '系统内测公告',
+        'kuangji': '矿机',
         // ==========jybInvest===================
         'JYBt': 'JYB创投',
         'JYByue': 'JYB 账户余额',
@@ -203,6 +204,7 @@ window.app = {
         'chongbi': 'Charge money',
         'tibi': 'Withdraw money',
         'gonggao': 'System internal test announcement',
+        'kuangji': 'Mining machine',
          // ==========jybInvest===================
         'JYBt': 'JYB Venture ',
         'JYByue': 'JYB Account balance',
