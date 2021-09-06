@@ -7,12 +7,18 @@ import { Provider } from 'react-redux'
 import './mock'
 import './assets/index.less'
 import './localeprovider/home/index.js'
+
+
+
+
 // import './localeprovider/home/jybInvest/index.js'
 // import './localeprovider/home/investRecord/index.js'
 
 import qs from 'qs';
 import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
 import scriptjs from 'scriptjs';
+
+
 
 const locale = qs.parse(location.search && location.search.slice(1)).locale || 'en-US';
 const localePrefix = locale.slice(0, locale.indexOf('-'));
@@ -69,6 +75,8 @@ console.log(scripts)
     //   },
     // };
     const defaultApp = window.app['en-US'];
+
+
 
       ReactDOM.render(
         <HashRouter>
