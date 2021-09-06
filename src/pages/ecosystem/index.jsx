@@ -23,7 +23,10 @@ class App extends React.Component {
         return (
             <div className="wrap">
                 <div className="part" onClick={() => {
-                    this.setState({ showTip: true })
+                    // this.setState({ showTip: true })
+                   
+                    window.location.href="http://shoptest.315red.com.cn/addons/ddwx_shop/m.php?s=/index/index/aid/1"; 
+                
                 }}>
                 <div className="title">
                 <FormattedMessage
@@ -33,18 +36,18 @@ class App extends React.Component {
                 </div>
                 <div className="content">
                     <div className="content_item">
-                    <MyImage
-                        src={require("@static/icon/eco/jiaofeifuwu.png")}
-                        className="content_item_logo"
-                    ></MyImage>
-                    <div className="content_item_tag">
-                        <FormattedMessage
-                            id="jiaofeifuwu"
-                            defaultMessage={defaultApp['jiaofeifuwu']}
-                        />
+                        <MyImage
+                            src={require("@static/icon/eco/jiaofeifuwu.png")}
+                            className="content_item_logo"
+                        ></MyImage>
+                        <div className="content_item_tag">
+                            <FormattedMessage
+                                id="shop"
+                                defaultMessage={defaultApp['shop']}
+                            />
+                        </div>
                     </div>
-                    </div>
-                    <div className="content_item">
+                    {/* <div className="content_item">
                     <MyImage
                         src={require("@static/icon/eco/jiaoyupeixun.png")}
                         className="content_item_logo"
@@ -127,13 +130,13 @@ class App extends React.Component {
                                 defaultMessage={defaultApp['wenhualvyou']}
                             />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 </div>
         
-                <div className="separate"></div>
+                {/* <div className="separate"></div> */}
         
-                <div className="part" onClick={() => {
+                {/* <div className="part" onClick={() => {
                     this.setState({ showTip: true })
                 }}>
                 <div className="title">
@@ -192,7 +195,7 @@ class App extends React.Component {
                     </div>
                     </div>
                 </div>
-                </div>
+                </div> */}
         
                 <Modal
                     className="tip_wrap"

@@ -12,10 +12,10 @@ class App extends React.Component {
         // this.buy = React.createRef()
         this.genData = this.genData.bind(this);
         banner(2).then(resp => {
-            console.log(resp)
-            console.log(resp.res)
+            // console.log(resp)
+            // console.log(resp.res)
             this.setState({
-              bannerList: resp.res 
+              bannerList: resp 
             });
           });
     }
@@ -47,15 +47,15 @@ class App extends React.Component {
         }
         this.setState({ refreshing: true });
         news({ page, pagesize }).then(resp => {
-          console.log(resp.res)
-          if (resp.res.data.length === 0) {
+          // console.log(resp.res)
+          if (resp.data.length === 0) {
             this.noMore = true;
             this.setState({ refreshing: false });
             return false;
           }
           this.page++;
           this.setState({
-            data: this.state.data.concat(resp.res.data),
+            data: this.state.data.concat(resp.data),
             refreshing: false
           });
         });

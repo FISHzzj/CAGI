@@ -31,7 +31,7 @@ class Finance extends React.Component {
 
         {/* 内容部分 */}
         <Tabs
-          tabBarBackgroundColor="#171414"
+          tabBarBackgroundColor="#18115a"
           tabBarActiveTextColor="#EBB807"
           tabBarTextStyle={{ fontSize: "14px" }}
           tabBarUnderlineStyle={{ borderColor: "#EBB807" }}

@@ -40,7 +40,7 @@ if (!window.Intl) {
 console.log(scripts)
 
   const ready = () => {
-    // addLocaleData(window.ReactIntlLocaleData[localePrefix]);
+    addLocaleData(window.ReactIntlLocaleData[localePrefix]);
     // window.app = {
     //   // output by server conditional
     //   'zh-Hans-CN': {

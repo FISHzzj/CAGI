@@ -67,61 +67,7 @@ importAll(require.context('./pages', true, /\.jsx$/));
 console.log(cache,'cache')
 
 
-const maxDate = new Date(2018, 11, 3, 22, 0);
-const minDate = new Date(2015, 7, 6, 8, 30);
 
-const seasons = [
-  [
-    {
-      label: '2013',
-      value: '2013',
-    },
-    {
-      label: '2014',
-      value: '2014',
-    },
-  ],
-  [
-    {
-      label: '春',
-      value: '春',
-    },
-    {
-      label: '夏',
-      value: '夏',
-    },
-  ],
-];
-
-const Page = () => (
-  <div>
-    <Pagination total={5} current={1} />
-    <WhiteSpace />
-    <List
-      className="date-picker-list"
-      style={{ backgroundColor: 'white' }}
-    >
-      <DatePicker
-        mode="date"
-        title="Select date"
-        minDate={minDate}
-        maxDate={maxDate}
-      >
-        <List.Item arrow="horizontal">datePicker</List.Item>
-      </DatePicker>
-      <Picker
-        data={seasons}
-        cascade={false}
-      >
-        <List.Item arrow="horizontal">picker</List.Item>
-      </Picker>
-    </List>
-    <WhiteSpace />
-    <SearchBar placeholder="Search" showCancelButton />
-    <WhiteSpace />
-    <InputItem type="money" placeholder="money input" />
-  </div>
-);
 
 //第二页，分类模块的文件使用react-loadable按需加载并且代码分割
 class App extends React.Component {
@@ -323,7 +269,7 @@ class App extends React.Component {
                 <i className="material-icons">favorite_border</i>
                 <span>首页</span>
               </NavLink>
-              <NavLink to="/shop" activeClassName="active" className="link">
+              <NavLink to="/ecosystem" activeClassName="active" className="link">
                 <i className="material-icons">reorder</i>
                 <span>商城</span>
               </NavLink>

@@ -38,17 +38,22 @@ class App extends React.Component {
     currencyList().then(resp => {
       // console.log(resp)
       this.setState({
-        currencyList: resp.res
+        currencyList: resp
       });
     });
     ventureList().then(resp => {
       this.setState({
-        ventureList: resp.res
+        ventureList: resp
       });
     });
     notice().then(resp => {
       this.setState({
-        noticeList: resp.res
+        noticeList: resp
+      });
+    });
+    banner(1).then(resp => {
+      this.setState({
+        bannerList: resp ?? []
       });
     });
   }
@@ -56,10 +61,7 @@ class App extends React.Component {
     currencyList: [],
     noticeList: [],
     ventureList: [],
-    bannerList: [
-      {id: 1, image: 'http://cagi.315red.com.cn/imgs/base/15851851461125450.jpg'},
-      {id: 2, image: 'http://cagi.315red.com.cn/imgs/base/15852054998320993.jpg'},
-    ],
+    bannerList: [],
     showContent: false,
     info: {},
     userInfo: 'https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/34578/22/10349/98741/5cda304eE9744e4ab/0fe030d12e36e851.jpg!cr_1125x549_0_72!q70.jpg'
@@ -123,6 +125,71 @@ class App extends React.Component {
             ))}
           </Carousel>
         </div>
+
+                {/* 轮播下面的部分一 */}
+        <div className="part part_one">
+          <div
+            className="part_one_item"
+            onClick={() => {
+              this.props.history.push("/jyb-invest");
+            }}
+          >
+            <MyImage
+              src={require("@static/icon/home_jyp_chuangtou.png")}
+              className="part_one_item_img"
+            ></MyImage>
+            <span className="part_one_item_title"><FormattedMessage
+              id="JYB"
+              defaultMessage={defaultApp['JYB']}
+            /></span>
+          </div>
+          <div
+            className="part_one_item"
+            onClick={() => {
+              this.props.history.push("/ustd-invest");
+            }}
+          >
+            <MyImage
+              src={require("@static/icon/home_usdt_chuangtou.png")}
+              className="part_one_item_img"
+            ></MyImage>
+            <span className="part_one_item_title"><FormattedMessage
+              id="USDT"
+              defaultMessage={defaultApp['USDT']}
+            /></span>
+          </div>
+          <div
+            className="part_one_item"
+            // onClick={() => {
+            //   this.props.history.push("/profit");
+            // }}
+          >
+            <MyImage
+              src={require("@static/icon/home_my_invest.png")}
+              className="part_one_item_img"
+            ></MyImage>
+            <span className="part_one_item_title"><FormattedMessage
+              id="jiaoyisuo"
+              defaultMessage={defaultApp['jiaoyisuo']}
+            /></span>
+          </div>
+          <div
+            className="part_one_item"
+            onClick={() => {
+              this.props.history.push("/transfer");
+            }}
+          >
+            <MyImage
+              src={require("@static/icon/home_transfer.png")}
+              className="part_one_item_img"
+            ></MyImage>
+            <span className="part_one_item_title"><FormattedMessage
+              id="zhuanzhan"
+              defaultMessage={defaultApp['zhuanzhan']}
+            /></span>
+          </div>
+        </div>
+                
         <div className="part part_four">
           <div className="part_four_title"><FormattedMessage
               id="Price"
@@ -168,25 +235,38 @@ class App extends React.Component {
               $ {(this.state.currencyList[2]?.rate / 100).toFixed(4)}
             </span>
           </div>
+          <div className="part_four_item">
+            <MyImage
+              src={require("@static/icon/home_cagi.png")}
+              className="part_four_item_img"
+            ></MyImage>
+            <span className="part_four_item_name">CAGI</span>
+            <span className="part_four_item_price">
+              $ {(this.state.currencyList[2]?.rate / 100).toFixed(4)}
+            </span>
+          </div>
+          <div className="part_four_item">
+            <MyImage
+              src={require("@static/icon/home_mkl.png")}
+              className="part_four_item_img"
+            ></MyImage>
+            <span className="part_four_item_name">MKL</span>
+            <span className="part_four_item_price">
+              $ {(this.state.currencyList[2]?.rate / 100).toFixed(4)}
+            </span>
+          </div>
+          <div className="part_four_item">
+            <MyImage
+              src={require("@static/icon/home_tsm.png")}
+              className="part_four_item_img"
+            ></MyImage>
+            <span className="part_four_item_name">TSM</span>
+            <span className="part_four_item_price">
+              $ {(this.state.currencyList[2]?.rate / 100).toFixed(4)}
+            </span>
+          </div>
         </div>
-{/* 
-        <div>
-          <p>
-            npm install react-intl@2.0.0
-          </p>
-          <p>
-            <a href="?locale=en-US" className="localeclass"><FormattedMessage
-              id="app.en"
-              defaultMessage={defaultApp['app.en']}
-            /></a>
-          </p>
-          <p>
-            <a href="?locale=zh-Hans-CN" className="localeclass"><FormattedMessage
-              id="app.zh"
-              defaultMessage={defaultApp['app.zh']}
-            /></a>
-          </p>
-        </div> */}
+
 
         {/* 轮播图 */}
         {this.state.ventureList.length > 0 && <Carousel
@@ -206,69 +286,7 @@ class App extends React.Component {
         </Carousel>
         }
 
-        {/* 轮播下面的部分一 */}
-        <div className="part part_one">
-          <div
-            className="part_one_item"
-            onClick={() => {
-              this.props.history.push("/jyb-invest");
-            }}
-          >
-            <MyImage
-              src={require("@static/icon/home_jyp_chuangtou.png")}
-              className="part_one_item_img"
-            ></MyImage>
-            <span className="part_one_item_title"><FormattedMessage
-              id="JYB"
-              defaultMessage={defaultApp['JYB']}
-            /></span>
-          </div>
-          <div
-            className="part_one_item"
-            onClick={() => {
-              this.props.history.push("/ustd-invest");
-            }}
-          >
-            <MyImage
-              src={require("@static/icon/home_usdt_chuangtou.png")}
-              className="part_one_item_img"
-            ></MyImage>
-            <span className="part_one_item_title"><FormattedMessage
-              id="USDT"
-              defaultMessage={defaultApp['USDT']}
-            /></span>
-          </div>
-          <div
-            className="part_one_item"
-            // onClick={() => {
-            //   this.props.history.push("/profit");
-            // }}
-          >
-            <MyImage
-              src={require("@static/icon/home_my_invest.png")}
-              className="part_one_item_img"
-            ></MyImage>
-            <span className="part_one_item_title"><FormattedMessage
-              id="kuangji"
-              defaultMessage={defaultApp['kuangji']}
-            /></span>
-          </div>
-          <div
-            className="part_one_item"
-            onClick={() => {
-              this.props.history.push("/transfer");
-            }}
-          >
-            <MyImage
-              src={require("@static/icon/home_transfer.png")}
-              className="part_one_item_img"
-            ></MyImage>
-            <span className="part_one_item_title"><FormattedMessage
-              id="zhuanzhan"
-              defaultMessage={defaultApp['zhuanzhan']}
-            /></span>
-          </div>
-        </div>
+
 
         <div className="part part_two">
           <div

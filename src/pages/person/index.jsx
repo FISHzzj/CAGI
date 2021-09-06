@@ -132,6 +132,42 @@ class App extends React.Component{
                         <div>{this.state.accountInfo[2]}</div>
                       </div>
                     </div>
+                    <div className="balance_item">
+                      <MyImage src={require("@static/icon/home_cagi.png")} className="balance_item_logo"></MyImage>
+                      <div className="balance_item_info">
+                        <div>
+                          <FormattedMessage
+                            id="CAGIzhanghu"
+                            defaultMessage={defaultApp['CAGIzhanghu']}
+                          />
+                        </div>
+                        <div>{this.state.accountInfo[2]}</div>
+                      </div>
+                    </div>
+                    <div className="balance_item">
+                      <MyImage src={require("@static/icon/home_mkl.png")} className="balance_item_logo"></MyImage>
+                      <div className="balance_item_info">
+                        <div>
+                          <FormattedMessage
+                            id="MKLzhanghu"
+                            defaultMessage={defaultApp['JYBzhanghu']}
+                          />
+                        </div>
+                        <div>{this.state.accountInfo[2]}</div>
+                      </div>
+                    </div>
+                    <div className="balance_item">
+                      <MyImage src={require("@static/icon/home_tsm.png")} className="balance_item_logo"></MyImage>
+                      <div className="balance_item_info">
+                        <div>
+                          <FormattedMessage
+                            id="TSMzhanghu"
+                            defaultMessage={defaultApp['TSMzhanghu']}
+                          />
+                        </div>
+                        <div>{this.state.accountInfo[2]}</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
       
@@ -279,6 +315,24 @@ class App extends React.Component{
                         />
                       </span>
                     </div>
+                    {/* <div
+                      className="control_item"
+                      onClick={() => { 
+                        // console.log(333333333)
+                        window.location.href="http://shoptest.315red.com.cn/addons/ddwx_shop/m.php?s=/index/index/aid/1"; 
+                       }}
+                    >
+                      <MyImage
+                        src={require("@static/icon/my/tuiguangerweima.png")}
+                        className="control_item_img"
+                      ></MyImage>
+                      <span className="control_item_des">
+                        <FormattedMessage
+                          id="shop"
+                          defaultMessage={defaultApp['shop']}
+                        />
+                      </span>
+                    </div> */}
                   </div>
                 </div>
               </div>

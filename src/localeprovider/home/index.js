@@ -11,6 +11,7 @@ window.app = {
         'tibi': '提币',
         'gonggao': '系统内测公告',
         'kuangji': '矿机',
+        'jiaoyisuo': '交易所',
         // ==========jybInvest===================
         'JYBt': 'JYB创投',
         'JYByue': 'JYB 账户余额',
@@ -95,6 +96,9 @@ window.app = {
          'PSBAUzhanghu': 'PSBAU账户',
          'USDTzhanghu': 'USDT账户',
          'JYBzhanghu': 'JYB账户',
+         'CAGIzhanghu': 'CAGI账户',
+         'MKLzhanghu': 'MKL账户',
+         'TSMzhanghu': 'TSM账户',
          'gongneng': '功能',
          'zicangmingxi': '资产明细',
          'tuanduishouji': '团队收益',
@@ -104,6 +108,8 @@ window.app = {
          'zaixianliuyan': '在线留言',
          'mytuandui': '我的团队',
          'tuiguangerweima': '推广二维码',
+         'shop':'商城',
+        
          //--------------------------finance------------------------------------------------
          'zicanmingxi': '资产明细',
          'zhanghuleixing': '账户类型',
@@ -205,6 +211,7 @@ window.app = {
         'tibi': 'Withdraw money',
         'gonggao': 'System internal test announcement',
         'kuangji': 'Mining machine',
+        'jiaoyisuo': 'house',
          // ==========jybInvest===================
         'JYBt': 'JYB Venture ',
         'JYByue': 'JYB Account balance',
@@ -288,6 +295,9 @@ window.app = {
          'PSBAUzhanghu': 'PSBAU account',
          'USDTzhanghu': 'USDT account',
          'JYBzhanghu': 'JYB account',
+         'CAGIzhanghu': 'CAGI account',
+         'MKLzhanghu': 'MKL account',
+         'TSMzhanghu': 'TSM account',
          'gongneng': 'function',
          'zicangmingxi': 'Asset details',
          'tuanduishouji': 'Team benefits',
@@ -297,6 +307,7 @@ window.app = {
          'zaixianliuyan': 'Online Message',
          'mytuandui': 'My team',
          'tuiguangerweima': 'Generalized QR code',
+         'shop':'shop',
          //--------------------------finance------------------------------------------------
          'zicanmingxi': 'Asset details',
          'zhanghuleixing': 'Account type',

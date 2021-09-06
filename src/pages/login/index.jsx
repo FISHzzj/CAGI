@@ -40,11 +40,11 @@ class Login extends React.Component {
 
     return (
       <div className="login_wrap">
-        <MyImage
-          src={require("@static/img/logo.png")}
+        {/* <MyImage
+          src={require("@static/icon/logo.png")}
           className="logo"
-        ></MyImage>
-
+        ></MyImage> */}
+        <div className="logo_img_height"></div>
         <List className="form_wrap">
           <InputItem
             {...getFieldProps("member")}

@@ -92,7 +92,7 @@ module.exports = {
               {
                 loader: 'url-loader',
                 options: {
-                  limit: 8 * 1024,
+                  limit: 200000,
                   name: '[name].[hash:8].[ext]',
                   outputPath: '/img'
                 }
@@ -187,11 +187,11 @@ module.exports = {
         preset: ['default', { discardComments: { removeAll: true } }]
       }
     }),
-    new webpack.HashedModuleIdsPlugin(),
-    new PrerenderSPAPlugin({
-      routes: ['/', '/home', '/shop'],
-      staticDir: resolve(__dirname, '../dist')
-    })
+    new webpack.HashedModuleIdsPlugin()
+    // new PrerenderSPAPlugin({
+    //   routes: ['/', '/home', '/shop'],
+    //   staticDir: resolve(__dirname, '../dist')
+    // })
   ],
   mode: 'production',
   resolve: {
